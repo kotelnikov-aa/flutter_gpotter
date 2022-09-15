@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_gpotter/presentation/pages/tabscreen.dart';
+import 'presentation/pages/welcome_screen.dart';
+import 'presentation/pages/tabscreen.dart';
+import 'presentation/pages/signup_screen.dart';
+import 'presentation/pages/login_screen.dart';
 
-import 'internal/application.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
-void main() {
-  runApp(const Application());
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: 'welcome_screen',
+      routes: {
+        'welcome_screen': (context) => WelcomeScreen(),
+        'registration_screen': (context) => RegistrationScreen(),
+        'login_screen': (context) => LoginScreen(),
+        'home_screen': (context) => const TabScreen()
+      },
+    );
+  }
 }
