@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="flutter_gpotter.Flutter_gpotterPluginTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-09-19T10:23:35" hostname="CHEALE" time="1.166">
+  <properties/>
+  <testcase name="pluginRegistersATask()" classname="flutter_gpotter.Flutter_gpotterPluginTest" time="1.166"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

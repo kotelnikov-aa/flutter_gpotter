@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="flutter_gpotter.Flutter_gpotterPluginFunctionalTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-09-19T10:23:39" hostname="CHEALE" time="4.758">
+  <properties/>
+  <testcase name="canRunTask()" classname="flutter_gpotter.Flutter_gpotterPluginFunctionalTest" time="4.758"/>
+  <system-out><![CDATA[
+> Task :greeting
+Hello from plugin 'flutter_gpotter.greeting'
+
+BUILD SUCCESSFUL in 3s
+1 actionable task: 1 executed
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
