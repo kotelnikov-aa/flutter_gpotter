@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_gpotter/presentation/pages/tabscreen.dart';
 import 'presentation/pages/welcome_screen.dart';
-import 'presentation/pages/tabscreen.dart';
 import 'presentation/pages/signup_screen.dart';
 import 'presentation/pages/login_screen.dart';
 
