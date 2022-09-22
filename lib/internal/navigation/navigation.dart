@@ -31,7 +31,7 @@ class NavigatorsPages {
       key: keyspages[0],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const ElixirsScreen(),
+        builder: (context) => const ElixirScreen(),
       ),
     ),
     Navigator(
@@ -62,7 +62,7 @@ class NavigatorsPages {
       key: keyspages[4],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const ElixirsScreen(),
+        builder: (context) => const ElixirScreen(),
       ),
     ),
     Navigator(
