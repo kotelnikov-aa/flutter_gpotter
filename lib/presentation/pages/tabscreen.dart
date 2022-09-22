@@ -17,6 +17,7 @@ class _TabScreenState extends State<TabScreen> {
   NavigatorsPages navigatorsPages = NavigatorsPages();
   final _auth = FirebaseAuth.instance;
 
+  @override
   void initState() {
     super.initState();
     getCurrentUser();
