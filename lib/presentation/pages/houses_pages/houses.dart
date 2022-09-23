@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/internal/navigation/navigation.dart';
-import 'package:flutter_gpotter/presentation/pages/wizards_screen.dart';
+import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizards_screen.dart';
 
 class HousesScreen extends StatelessWidget {
   const HousesScreen({super.key});
@@ -13,8 +13,8 @@ class HousesScreen extends StatelessWidget {
         MaterialButton(
             child: const Text('go wizards'),
             onPressed: () {
-              NavigatorsPages.keyspages[1].currentState?.push(MaterialPageRoute(
-                  builder: (context) => const WizartsScreen()));
+              NavigatorsPages.keyspages[1].currentState?.push(
+                  MaterialPageRoute(builder: (context) => WizartsScreen()));
             }),
       ],
     );

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/presentation/pages/elixirs_screen.dart';
-import 'package:flutter_gpotter/presentation/pages/houses.dart';
-import 'package:flutter_gpotter/presentation/pages/spels_screen.dart';
-import 'package:flutter_gpotter/presentation/pages/wizards_screen.dart';
-
+import 'package:flutter_gpotter/presentation/pages/elixirs_pages/elixirs_screen.dart';
+import 'package:flutter_gpotter/presentation/pages/houses_pages/houses.dart';
+import 'package:flutter_gpotter/presentation/pages/spels_pages/spels_screen.dart';
+import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizards_screen.dart';
 
 class NavigatorsPages {
   NavigatorsPages._();
