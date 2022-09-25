@@ -1,40 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/presentation/pages/elixirs_pages/elixirs_short_info_page.dart';
-import 'package:flutter_gpotter/presentation/pages/loading_pages/loading_list_page.dart';
-
-import '../../../generated/swagger.swagger.dart';
+import 'package:flutter_gpotter/generated/swagger.swagger.dart';
+import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizarts_short_info_page.dart';
 import '../../../internal/enums.dart';
-import 'elixirs_card_screen.dart';
+import '../loading_pages/loading_list_page.dart';
 
-class ElixirScreen extends StatefulWidget {
-  const ElixirScreen({Key? key}) : super(key: key);
+class WizartsScreen extends StatefulWidget {
+  const WizartsScreen({Key? key}) : super(key: key);
 
   @override
-  State<ElixirScreen> createState() => _ElixirScreenState();
+  State<WizartsScreen> createState() => _WizartsScreenState();
 }
 
-class _ElixirScreenState extends State<ElixirScreen> {
+class _WizartsScreenState extends State<WizartsScreen> {
   final Swagger service =
       Swagger.create(baseUrl: 'https://wizard-world-api.herokuapp.com');
   var state = ContentState.initial;
-  final elixirs = <ElixirDto>[];
+  bool allloading = false;
+  final wizarts = <WizardDto>[];
 
   Future<void> load() async {
     setState(() {
       state = ContentState.loading;
     });
-    final response = await service.elixirsGet();
+    final response = await service.wizardsGet();
     if (!response.isSuccessful) {
       setState(() {
         state = ContentState.failure;
-        elixirs.clear();
+        wizarts.clear();
       });
     } else {
       setState(() {
         state = response.body!.isNotEmpty
             ? ContentState.success
             : ContentState.empty;
-        elixirs
+        wizarts
           ..clear()
           ..addAll(response.body!.toList());
       });
@@ -50,43 +49,43 @@ class _ElixirScreenState extends State<ElixirScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _ElixirView(
+      body: _WizartsView(
         state: state,
-        elixirs: elixirs,
+        wizarts: wizarts,
       ),
     );
   }
 }
 
-class _ElixirView extends StatelessWidget {
+class _WizartsView extends StatelessWidget {
   final ContentState state;
-  final List<ElixirDto> elixirs;
+  final List<WizardDto> wizarts;
 
-  const _ElixirView({
+  const _WizartsView({
     Key? key,
     required this.state,
-    required this.elixirs,
+    required this.wizarts,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     if (StatusSettings.change.sortingListStatus == true) {
-      elixirs.sort((a, b) => a.name!.compareTo(b.name!));
+      wizarts.sort((a, b) => a.firstName!.compareTo(b.firstName!));
     }
     switch (state) {
       case ContentState.success:
         return ListView.builder(
           scrollDirection: Axis.vertical,
-          itemCount: elixirs.length,
+          itemCount: wizarts.length,
           itemBuilder: (context, i) => GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ElixirCardScreen(elixir: elixirs[i]),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => ElixirCardScreen(elixir: elixirs[i]),
+              //   ),
+              // );
             },
-            child: ElixirsShortInfoView(value: elixirs[i]),
+            child: WizartsShortInfoView(value: wizarts[i]),
           ),
         );
       case ContentState.loading:

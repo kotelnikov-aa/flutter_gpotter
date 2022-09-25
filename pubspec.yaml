@@ -39,6 +39,7 @@ dependencies:
   modal_progress_hud_nsn: ^0.3.0
   chopper: ^5.0.0
   json_annotation: ^4.6.0
+  shimmer: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,7 +47,6 @@ dev_dependencies:
   chopper_generator: ^5.0.0+1
   json_serializable: ^6.3.2
   swagger_dart_code_generator: ^2.8.1
-  vertical_card_pager: ^1.5.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

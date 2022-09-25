@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/presentation/pages/elixirs_pages/elixirs_screen.dart';
-import 'package:flutter_gpotter/presentation/pages/houses_pages/houses.dart';
+import 'package:flutter_gpotter/presentation/pages/houses_pages/houses_screen.dart';
 import 'package:flutter_gpotter/presentation/pages/spels_pages/spels_screen.dart';
-import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizards_screen.dart';
+import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizarts_screen.dart';
 
 class NavigatorsPages {
   NavigatorsPages._();
@@ -22,8 +22,8 @@ class NavigatorsPages {
     GlobalKey<NavigatorState>()
   ];
   static GlobalKey<NavigatorState>? _currentpage;
-  set setcurrentpagekey(GlobalKey<NavigatorState> val) => _currentpage = val;
-  GlobalKey<NavigatorState>? get getcurrentpagekey => _currentpage;
+  set currentpagekey(GlobalKey<NavigatorState> val) => _currentpage = val;
+  GlobalKey<NavigatorState>? get currentpage => _currentpage;
 
   List<Navigator> listpages = [
     Navigator(

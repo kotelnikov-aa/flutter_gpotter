@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
 
-class ElixirsShortInfoView extends StatelessWidget {
-  final ElixirDto value;
-  const ElixirsShortInfoView({Key? key, required this.value}) : super(key: key);
+class WizartsShortInfoView extends StatelessWidget {
+  final WizardDto value;
+  const WizartsShortInfoView({Key? key, required this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,27 +17,19 @@ class ElixirsShortInfoView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              value.name ?? '',
+              value.firstName ?? '',
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 5),
             Container(
               alignment: Alignment.bottomLeft,
               child: Text(
-                'Effect - ${value.effect}',
+                'Elixirs - ${value.elixirs}',
                 textAlign: TextAlign.left,
                 softWrap: true,
               ),
             ),
             const SizedBox(height: 5),
-            Container(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                value.difficulty.toString(),
-                textAlign: TextAlign.left,
-                softWrap: true,
-              ),
-            ),
           ],
         ),
       ),

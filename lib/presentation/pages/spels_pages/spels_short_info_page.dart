@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
 
-class ElixirsShortInfoView extends StatelessWidget {
-  final ElixirDto value;
-  const ElixirsShortInfoView({Key? key, required this.value}) : super(key: key);
+class SpelsShortInfoView extends StatelessWidget {
+  final SpellDto value;
+  const SpelsShortInfoView({Key? key, required this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class ElixirsShortInfoView extends StatelessWidget {
             Container(
               alignment: Alignment.bottomLeft,
               child: Text(
-                value.difficulty.toString(),
+                value.type.toString(),
                 textAlign: TextAlign.left,
                 softWrap: true,
               ),

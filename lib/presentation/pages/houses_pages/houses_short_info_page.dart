@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
 
-class ElixirsShortInfoView extends StatelessWidget {
-  final ElixirDto value;
-  const ElixirsShortInfoView({Key? key, required this.value}) : super(key: key);
+class HousesShortInfoView extends StatelessWidget {
+  final HouseDto value;
+  const HousesShortInfoView({Key? key, required this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class ElixirsShortInfoView extends StatelessWidget {
             Container(
               alignment: Alignment.bottomLeft,
               child: Text(
-                'Effect - ${value.effect}',
+                'Effect - ${value.commonRoom}',
                 textAlign: TextAlign.left,
                 softWrap: true,
               ),
@@ -33,7 +33,7 @@ class ElixirsShortInfoView extends StatelessWidget {
             Container(
               alignment: Alignment.bottomLeft,
               child: Text(
-                value.difficulty.toString(),
+                value.ghost.toString(),
                 textAlign: TextAlign.left,
                 softWrap: true,
               ),

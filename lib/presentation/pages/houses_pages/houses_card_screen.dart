@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
-import 'elixirs_delail_info_page.dart';
 
-class ElixirCardScreen extends StatelessWidget {
-  final ElixirDto elixir;
-  const ElixirCardScreen({Key? key, required this.elixir}) : super(key: key);
+import 'houses_detail_info_page.dart';
+
+class HousesCardScreen extends StatelessWidget {
+  final HouseDto houses;
+  const HousesCardScreen({Key? key, required this.houses}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ElixirsDetailInfoView(elixir: elixir),
+          HousesDetailInfoView(houses: houses),
           TextButton(
             onPressed: () {
               // add to favorite,

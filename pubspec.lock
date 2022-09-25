@@ -457,6 +457,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  shimmer:
+    dependency: "direct main"
+    description:
+      name: shimmer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -560,13 +567,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
-  vertical_card_pager:
-    dependency: "direct dev"
-    description:
-      name: vertical_card_pager
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.5.0"
   watcher:
     dependency: transitive
     description:
