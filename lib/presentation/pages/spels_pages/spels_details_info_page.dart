@@ -12,7 +12,10 @@ class SplesDetailInfoView extends StatelessWidget {
       children: [
         Text(spels.name ?? ' '),
         Text(spels.effect ?? ' '),
+        Text(spels.light.toString()),
+        Text(spels.creator.toString()),
         Text(spels.type.toString()),
+        Text(spels.incantation.toString()),
       ],
     );
   }

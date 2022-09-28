@@ -17,3 +17,10 @@ class StatusSettings {
   set favoriteSccreenStatus(bool value) => _favoriteSccreenStatus = value;
   set sortingListStatus(bool value) => _sortingListStatus = value;
 }
+
+enum DataAPI {
+  elixirs,
+  houses,
+  spels,
+  wizarts,
+}

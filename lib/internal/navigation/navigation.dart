@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/presentation/pages/elixirs_pages/elixirs_screen.dart';
+import 'package:flutter_gpotter/internal/enums.dart';
+import 'package:flutter_gpotter/presentation/pages/datafromAPI_screen.dart';
 import 'package:flutter_gpotter/presentation/pages/houses_pages/houses_screen.dart';
 import 'package:flutter_gpotter/presentation/pages/spels_pages/spels_screen.dart';
 import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizarts_screen.dart';
@@ -30,28 +31,28 @@ class NavigatorsPages {
       key: keyspages[0],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const ElixirScreen(),
+        builder: (context) => const DataScreen(dataApi: DataAPI.elixirs),
       ),
     ),
     Navigator(
       key: keyspages[1],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const HousesScreen(),
+        builder: (context) => const DataScreen(dataApi: DataAPI.houses),
       ),
     ),
     Navigator(
       key: keyspages[2],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const SpelsScreen(),
+        builder: (context) => const DataScreen(dataApi: DataAPI.spels),
       ),
     ),
     Navigator(
       key: keyspages[3],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const WizartsScreen(),
+        builder: (context) => const DataScreen(dataApi: DataAPI.wizarts),
       ),
     ),
   ];
@@ -61,28 +62,28 @@ class NavigatorsPages {
       key: keyspages[4],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const ElixirScreen(),
+        builder: (context) => const DataScreen(dataApi: DataAPI.elixirs),
       ),
     ),
     Navigator(
       key: keyspages[5],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const HousesScreen(),
+        builder: (context) => const DataScreen(dataApi: DataAPI.houses),
       ),
     ),
     Navigator(
       key: keyspages[6],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const SpelsScreen(),
+        builder: (context) => const DataScreen(dataApi: DataAPI.spels),
       ),
     ),
     Navigator(
       key: keyspages[7],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const WizartsScreen(),
+        builder: (context) => const DataScreen(dataApi: DataAPI.wizarts),
       ),
     ),
   ];
