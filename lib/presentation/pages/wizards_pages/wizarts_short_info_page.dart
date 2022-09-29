@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
+import 'package:flutter_gpotter/internal/constants/Colors.dart';
 import 'package:flutter_gpotter/presentation/pages/wizards_pages/valid_name.dart';
 
 class WizartsShortInfoView extends StatelessWidget {
@@ -10,7 +11,7 @@ class WizartsShortInfoView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-      elevation: 10,
+      elevation: elevationAll,
       child: SizedBox(
         height: 80,
         child: Column(
@@ -22,8 +23,8 @@ class WizartsShortInfoView extends StatelessWidget {
             Text(
               value.lastName ?? '',
               overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.headline6,
             ),
-
           ],
         ),
       ),

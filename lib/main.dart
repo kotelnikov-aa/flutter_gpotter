@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gpotter/internal/constants/Colors.dart';
 import 'package:flutter_gpotter/presentation/pages/tabscreen.dart';
 import 'presentation/pages/login_screen.dart';
 import 'presentation/pages/signup_screen.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: 'welcome_screen',
+      theme: MyTheme(),
       routes: {
         'welcome_screen': (context) => WelcomeScreen(),
         'registration_screen': (context) => RegistrationScreen(),

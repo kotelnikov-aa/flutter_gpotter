@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import 'windgets/potter_button.dart';
+
 //code for designing the UI of our text field where the user writes his email id or password
 
 const kTextFieldDecoration = InputDecoration(
@@ -34,48 +36,43 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    email = value;
-                  },
-                  decoration:
-                      kTextFieldDecoration.copyWith(hintText: 'Введите email')),
-              const SizedBox(
-                height: 8.0,
-              ),
-              TextField(
-                  obscureText: true,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    password = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Введите пароль')),
-              const SizedBox(
-                height: 24.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: Material(
-                  elevation: 5.0,
-                  color: Colors.blueAccent,
-                  borderRadius: BorderRadius.circular(30.0),
-                  child: MaterialButton(
-                    onPressed: () async {
-                      setState(() {
-                        showSpinner = true;
-                      });
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    decoration: kTextFieldDecoration.copyWith(
+                        hintText: 'Введите email')),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                TextField(
+                    obscureText: true,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      password = value;
+                    },
+                    decoration: kTextFieldDecoration.copyWith(
+                        hintText: 'Введите пароль')),
+                const SizedBox(height: 24.0),
+                GestureDetector(
+                    child: const BottonPotter(value: 'login in'),
+                    onTap: () async {
+                      setState(
+                        () {
+                          showSpinner = true;
+                        },
+                      );
                       try {
                         final newUser =
                             await _auth.createUserWithEmailAndPassword(
@@ -89,18 +86,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       setState(() {
                         showSpinner = false;
                       });
-                    },
-                    //Go to login screen.
-                    minWidth: 200.0,
-                    height: 42.0,
-                    child: const Text(
-                      'Регистрация',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+                    }),
+              ],
+            ),
           ),
         ),
       ),

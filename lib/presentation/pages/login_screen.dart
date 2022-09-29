@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gpotter/presentation/pages/windgets/potter_button.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -65,44 +65,27 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Введите Ваш пароль')),
-              const SizedBox(
-                height: 24.0,
-              ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () async {
-                    setState(() {
-                      showSpinner = true;
-                    });
-                    try {
-                      final user = await _auth.signInWithEmailAndPassword(
-                          email: email, password: password);
-                      if (user != null) {
-                        Navigator.pushNamed(context, 'home_screen');
-                      }
-                    } catch (e) {
-                      print(e);
+              const SizedBox(height: 24.0),
+              GestureDetector(
+                child: const BottonPotter(value: 'login in'),
+                onTap: () async {
+                  setState(() {
+                    showSpinner = true;
+                  });
+                  try {
+                    final user = await _auth.signInWithEmailAndPassword(
+                        email: email, password: password);
+                    if (user != null) {
+                      Navigator.pushNamed(context, 'home_screen');
                     }
-                    setState(() {
-                      showSpinner = false;
-                    });
-                  },
-                  //Go to login screen.
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: const Text(
-                    'Войти',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
+                  } catch (e) {
+                    print(e);
+                  }
+                  setState(() {
+                    showSpinner = false;
+                  });
+                },
               ),
-            ),
-
             ],
           ),
         ),

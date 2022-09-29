@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gpotter/internal/constants/Colors.dart';
 import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/internal/navigation/navigation.dart';
-import 'package:flutter_gpotter/presentation/pages/elixirs_pages/elixirs_screen.dart';
 
 late User loggedinUser;
 
@@ -34,24 +34,16 @@ class _TabScreenState extends State<TabScreen> {
   void changeFavorite() {
     setState(() {
       navigatorsPages.currentpagekey = NavigatorsPages.keyspages[_currentIndex];
-
-      if (StatusSettings.change.favoriteSccreenStatus == false) {
-        StatusSettings.change.favoriteSccreenStatus = true;
-      } else {
-        StatusSettings.change.favoriteSccreenStatus = false;
-      }
+      StatusSettings.change.favoriteSccreenStatus =
+          StatusSettings.change.favoriteSccreenStatus ? false : true;
     });
   }
 
   void chanheSorting() {
     setState(() {
-      print('changesort index- $_currentIndex');
       changeTab(_currentIndex);
-      if (StatusSettings.change.sortingListStatus == false) {
-        StatusSettings.change.sortingListStatus = true;
-      } else {
-        StatusSettings.change.sortingListStatus = false;
-      }
+      StatusSettings.change.sortingListStatus =
+          StatusSettings.change.sortingListStatus ? false : true;
     });
   }
 
@@ -73,12 +65,15 @@ class _TabScreenState extends State<TabScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(StatusSettings.change.favoriteSccreenStatus
-            ? 'favorite screen'
-            : 'main screen'),
+        title: Text(
+          StatusSettings.change.favoriteSccreenStatus
+              ? 'favorite screen'
+              : 'main screen',
+          style: Theme.of(context).textTheme.headline6,
+        ),
         backgroundColor: (StatusSettings.change.favoriteSccreenStatus
-            ? Colors.red
-            : Colors.grey),
+            ? secondaryColor
+            : secondaryColorLight),
         actions: [
           TextButton(
             onPressed: (() {
@@ -87,8 +82,10 @@ class _TabScreenState extends State<TabScreen> {
             child: Icon(
               Icons.list,
               color: (StatusSettings.change.sortingListStatus
-                  ? Color.fromARGB(255, 255, 7, 197)
-                  : Colors.black),
+                  ? primaryColor
+                  : StatusSettings.change.favoriteSccreenStatus
+                      ? secondaryColorLight
+                      : secondaryColor),
             ),
           ),
           TextButton(
@@ -98,8 +95,8 @@ class _TabScreenState extends State<TabScreen> {
             child: Icon(
               Icons.star,
               color: (StatusSettings.change.favoriteSccreenStatus
-                  ? Colors.amber
-                  : Colors.black),
+                  ? primaryColor
+                  : secondaryColor),
             ),
           ),
         ],
@@ -116,9 +113,10 @@ class _TabScreenState extends State<TabScreen> {
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: changeTab,
+          fixedColor: primaryColorDark,
           backgroundColor: (StatusSettings.change.favoriteSccreenStatus
-              ? Colors.red
-              : Colors.grey),
+              ? secondaryColor
+              : secondaryColorLight),
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
