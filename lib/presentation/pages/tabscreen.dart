@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gpotter/internal/constants/Colors.dart';
+import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/internal/navigation/navigation.dart';
 
 late User loggedinUser;
@@ -13,7 +15,6 @@ class TabScreen extends StatefulWidget {
 
 class _TabScreenState extends State<TabScreen> {
   int _currentIndex = 0;
-  bool _favorite = true;
   NavigatorsPages navigatorsPages = NavigatorsPages();
   final _auth = FirebaseAuth.instance;
 
@@ -26,20 +27,23 @@ class _TabScreenState extends State<TabScreen> {
   void changeTab(int index) {
     setState(() {
       _currentIndex = index;
-      navigatorsPages.setcurrentpagekey = NavigatorsPages.keyspages[index];
+      navigatorsPages.currentpagekey = NavigatorsPages.keyspages[index];
     });
   }
 
   void changeFavorite() {
     setState(() {
-      navigatorsPages.setcurrentpagekey =
-          NavigatorsPages.keyspages[_currentIndex];
+      navigatorsPages.currentpagekey = NavigatorsPages.keyspages[_currentIndex];
+      StatusSettings.change.favoriteSccreenStatus =
+          StatusSettings.change.favoriteSccreenStatus ? false : true;
+    });
+  }
 
-      if (_favorite == false) {
-        _favorite = true;
-      } else {
-        _favorite = false;
-      }
+  void chanheSorting() {
+    setState(() {
+      changeTab(_currentIndex);
+      StatusSettings.change.sortingListStatus =
+          StatusSettings.change.sortingListStatus ? false : true;
     });
   }
 
@@ -57,21 +61,47 @@ class _TabScreenState extends State<TabScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print('build index- $_currentIndex');
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(_favorite ? 'favorite screen' : 'main screen'),
-        backgroundColor: (_favorite ? Colors.red : Colors.grey),
+        title: Text(
+          StatusSettings.change.favoriteSccreenStatus
+              ? 'favorite screen'
+              : 'main screen',
+          style: Theme.of(context).textTheme.headline6,
+        ),
+        backgroundColor: (StatusSettings.change.favoriteSccreenStatus
+            ? secondaryColor
+            : secondaryColorLight),
         actions: [
           TextButton(
-              onPressed: (() {
-                changeFavorite();
-              }),
-              child: Icon(Icons.star,
-                  color: (_favorite ? Colors.amber : Colors.black))),
+            onPressed: (() {
+              chanheSorting();
+            }),
+            child: Icon(
+              Icons.list,
+              color: (StatusSettings.change.sortingListStatus
+                  ? primaryColor
+                  : StatusSettings.change.favoriteSccreenStatus
+                      ? secondaryColorLight
+                      : secondaryColor),
+            ),
+          ),
+          TextButton(
+            onPressed: (() {
+              changeFavorite();
+            }),
+            child: Icon(
+              Icons.star,
+              color: (StatusSettings.change.favoriteSccreenStatus
+                  ? primaryColor
+                  : secondaryColor),
+            ),
+          ),
         ],
       ),
-      body: _favorite
+      body: StatusSettings.change.favoriteSccreenStatus
           ? IndexedStack(
               index: _currentIndex,
               children: navigatorsPages.favoritelistpages,
@@ -83,7 +113,10 @@ class _TabScreenState extends State<TabScreen> {
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: changeTab,
-          backgroundColor: (_favorite ? Colors.red : Colors.grey),
+          fixedColor: primaryColorDark,
+          backgroundColor: (StatusSettings.change.favoriteSccreenStatus
+              ? secondaryColor
+              : secondaryColorLight),
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
