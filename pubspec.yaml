@@ -39,6 +39,8 @@ dependencies:
   modal_progress_hud_nsn: ^0.3.0
   chopper: ^5.0.0
   json_annotation: ^4.6.0
+  shimmer: ^2.0.0
+  share_plus: ^4.5.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

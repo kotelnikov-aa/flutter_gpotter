@@ -14,7 +14,7 @@ enum ElixirDifficulty {
   @JsonValue('OrdinaryWizardingLevel')
   ordinarywizardinglevel,
   @JsonValue('OneOfAKind')
-  oneofakind
+  oneofakind, difficulty
 }
 
 const $ElixirDifficultyMap = {
