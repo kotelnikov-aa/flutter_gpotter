@@ -28,3 +28,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// dart pub global activate flutterfire_cli
