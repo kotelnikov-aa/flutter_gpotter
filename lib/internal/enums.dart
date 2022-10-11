@@ -6,6 +6,18 @@ enum ContentState {
   failure,
 }
 
+enum Share {
+  facebook,
+  messenger,
+  twitter,
+  whatsapp,
+  whatsapp_personal,
+  whatsapp_business,
+  share_system,
+  share_instagram,
+  share_telegram
+}
+
 class StatusSettings {
   StatusSettings._();
   bool _favoriteSccreenStatus = false;
