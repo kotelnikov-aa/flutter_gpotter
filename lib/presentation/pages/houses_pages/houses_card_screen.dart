@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
-import 'package:flutter_gpotter/presentation/pages/windgets/potter_button.dart';
+import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
 
 import '../../../internal/share_screen.dart';
+import '../favorite_button.dart';
 import 'houses_detail_info_page.dart';
 
 class HousesCardScreen extends StatelessWidget {
@@ -17,13 +18,14 @@ class HousesCardScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           HousesDetailInfoView(houses: houses),
-          const BottonPotter(value: 'add to favorite'),
+          FaviriteButtonChange(value: houses),
           GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>    ShareScreen( text: houses.name!, subject: houses.commonRoom!),
+                  builder: (context) => ShareScreen(
+                      text: houses.name!, subject: houses.commonRoom!),
                 ),
               );
             },

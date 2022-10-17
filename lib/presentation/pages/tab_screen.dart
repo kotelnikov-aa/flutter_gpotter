@@ -40,8 +40,8 @@ class _TabScreenState extends State<TabScreen> {
   }
 
   void chanheSorting() {
+    changeTab(_currentIndex);
     setState(() {
-      changeTab(_currentIndex);
       StatusSettings.change.sortingListStatus =
           StatusSettings.change.sortingListStatus ? false : true;
     });
@@ -61,7 +61,6 @@ class _TabScreenState extends State<TabScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('build index- $_currentIndex');
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
