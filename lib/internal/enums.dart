@@ -36,3 +36,10 @@ enum DataAPI {
   spels,
   wizarts,
 }
+
+enum FavoritePositionState {
+  init,
+  loading,
+  inFavorite,
+  notInFavorite,
+}

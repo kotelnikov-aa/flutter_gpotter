@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/internal/constants/Colors.dart';
-import 'package:flutter_gpotter/presentation/pages/windgets/potter_button.dart';
+import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Text(
                 'Dear Friends, welcome to Harry Potter the wizarding world! Please enter to authorization',
                 softWrap: true,
-                style: MyTheme().textTheme.headline6,
+                style: myTheme().textTheme.headline6,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),

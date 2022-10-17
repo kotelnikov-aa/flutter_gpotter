@@ -10,7 +10,7 @@ class BottonPotter extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-          color: secondaryColor,
+          color: secondaryColorLight,
           borderRadius: BorderRadius.circular(borderradiusCard),
         ),
         width: MediaQuery.of(context).size.width - 10.0,
