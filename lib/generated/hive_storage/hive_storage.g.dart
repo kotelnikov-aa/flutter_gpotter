@@ -6,6 +6,40 @@ part of 'hive_storage.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
+class KeyThemeAdapter extends TypeAdapter<KeyTheme> {
+  @override
+  final int typeId = 0;
+
+  @override
+  KeyTheme read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return KeyTheme(
+      theme: fields[0] as bool,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, KeyTheme obj) {
+    writer
+      ..writeByte(1)
+      ..writeByte(0)
+      ..write(obj.theme);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KeyThemeAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
 class KeyElixirAdapter extends TypeAdapter<KeyElixir> {
   @override
   final int typeId = 1;
