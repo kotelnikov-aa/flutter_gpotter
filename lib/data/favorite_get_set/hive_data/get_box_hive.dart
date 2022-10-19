@@ -1,7 +1,7 @@
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
 import 'package:hive/hive.dart';
-import '../../generated/hive_storage/hive_storage.dart';
-import '../../internal/constants/storage.dart';
+import '../../../generated/hive_storage/hive_storage.dart';
+import '../../../internal/constants/storage.dart';
 
 Future getBoxHive(Object value) async {
   // Hive.deleteBoxFromDisk(favoriteNameStorage);

@@ -3,8 +3,8 @@ import 'package:flutter_gpotter/presentation/pages/loading_pages/loading_button.
 import 'package:hive/hive.dart';
 import '../../internal/enums.dart';
 import 'widgets_pages/potter_button.dart';
-import '../../data/favorite_get_set/get_box_hive.dart';
-import '../../data/favorite_get_set/make_key_get_id.dart';
+import '../../data/favorite_get_set/hive_data/get_box_hive.dart';
+import '../../data/favorite_get_set/hive_data/make_key_get_id.dart';
 
 class FaviriteButtonChange extends StatefulWidget {
   const FaviriteButtonChange({super.key, required this.value});

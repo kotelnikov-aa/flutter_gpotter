@@ -5,6 +5,7 @@ import 'package:flutter_gpotter/presentation/pages/spels_pages/spels_details_inf
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
 import '../../../internal/share_screen.dart';
 import '../favorite_button.dart';
+import '../widgets_pages/back_button.dart';
 
 class SplelsCardScreen extends StatelessWidget {
   final SpellDto spels;
@@ -28,10 +29,7 @@ class SplelsCardScreen extends StatelessWidget {
           },
           child: const BottonPotter(value: 'send info'),
         ),
-        GestureDetector(
-          child: const BottonPotter(value: 'back'),
-          onTap: () => Navigator.pop(context),
-        ),
+        const BackButtonPotter(),
       ],
     );
   }

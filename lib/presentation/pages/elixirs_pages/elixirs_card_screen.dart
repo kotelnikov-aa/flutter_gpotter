@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/presentation/pages/favorite_button.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
+import 'package:flutter_gpotter/presentation/pages/widgets_pages/back_button.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
 import '../../../internal/enums.dart';
 import '../../../internal/share_screen.dart';
@@ -34,10 +35,7 @@ class ElixirCardScreen extends StatelessWidget {
             child: const BottonPotter(value: 'send info'),
           ),
           const SizedBox(height: 10),
-          GestureDetector(
-            child: const BottonPotter(value: 'back'),
-            onTap: () => Navigator.pop(context),
-          ),
+          const BackButtonPotter(),
         ],
       ),
     );

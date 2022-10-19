@@ -5,6 +5,7 @@ import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.d
 import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizarts_detail_info_page.dart';
 import '../../../internal/share_screen.dart';
 import '../favorite_button.dart';
+import '../widgets_pages/back_button.dart';
 
 class WizartsCardScreen extends StatelessWidget {
   final WizardDto wizarts;
@@ -29,10 +30,7 @@ class WizartsCardScreen extends StatelessWidget {
             },
             child: const BottonPotter(value: 'send info'),
           ),
-          GestureDetector(
-            child: const BottonPotter(value: 'back'),
-            onTap: () => Navigator.pop(context),
-          ),
+          const BackButtonPotter(),
         ],
       ),
     );

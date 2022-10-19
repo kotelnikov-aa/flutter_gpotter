@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/presentation/pages/datafromAPI_screen.dart';
+import 'package:flutter_gpotter/presentation/pages/elixirs_pages/elixirs_screen.dart';
 import 'package:flutter_gpotter/presentation/pages/houses_pages/houses_screen.dart';
 import 'package:flutter_gpotter/presentation/pages/spels_pages/spels_screen.dart';
 import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizarts_screen.dart';
+
+import '../../presentation/pages/data_favorite_screen.dart';
 
 class NavigatorsPages {
   NavigatorsPages._();
@@ -62,28 +65,30 @@ class NavigatorsPages {
       key: keyspages[4],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const DataScreen(dataApi: DataAPI.elixirs),
+        builder: (context) =>
+            const DataFavoriteScreen(dataApi: DataAPI.elixirs),
       ),
     ),
     Navigator(
       key: keyspages[5],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const DataScreen(dataApi: DataAPI.houses),
+        builder: (context) => const DataFavoriteScreen(dataApi: DataAPI.houses),
       ),
     ),
     Navigator(
       key: keyspages[6],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const DataScreen(dataApi: DataAPI.spels),
+        builder: (context) => const DataFavoriteScreen(dataApi: DataAPI.spels),
       ),
     ),
     Navigator(
       key: keyspages[7],
       onGenerateRoute: (route) => MaterialPageRoute(
         settings: route,
-        builder: (context) => const DataScreen(dataApi: DataAPI.wizarts),
+        builder: (context) =>
+            const DataFavoriteScreen(dataApi: DataAPI.wizarts),
       ),
     ),
   ];
