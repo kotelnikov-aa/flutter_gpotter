@@ -85,12 +85,16 @@ class _DataScreenState extends State<DataScreen> {
       case ContentState.success:
         switch (widget.dataApi) {
           case DataAPI.elixirs:
+            StatusSettings.change.elixirs = data;
             return ElixirsScreen(elixirs: data);
           case DataAPI.houses:
+            StatusSettings.change.houses = data;
             return HousesScreen(houses: data);
           case DataAPI.spels:
+            StatusSettings.change.spels = data;
             return SpelsScreen(spels: data);
           case DataAPI.wizarts:
+            StatusSettings.change.wizarts = data;
             return WizartsScreen(wizarts: data);
         }
       case ContentState.loading:
@@ -99,20 +103,14 @@ class _DataScreenState extends State<DataScreen> {
         );
       case ContentState.empty:
         return const Center(
-          child: Text(
-            'Пустой список данных',
-          ),
+          child: Text('Пустой список данных'),
         );
       case ContentState.failure:
         return const Center(
-          child: Text(
-            'Ууупс, что-то пошло не так',
-          ),
+          child: Text('Ууупс, что-то пошло не так'),
         );
       default:
-        return const Center(
-          child: Text('данные не загружены'),
-        );
+        return const Center(child: Text('данные не загружены'));
     }
   }
 }
