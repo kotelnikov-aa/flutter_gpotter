@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'hive_storage.g.dart';
 
+<<<<<<< HEAD
 @HiveType(typeId: 0)
 class KeyTheme {
   @HiveField(0)
@@ -11,6 +12,8 @@ class KeyTheme {
   });
 }
 
+=======
+>>>>>>> faf5456d0ce50fac71c54ba819fa2cbddff112a6
 @HiveType(typeId: 1)
 class KeyElixir {
   @HiveField(0)
