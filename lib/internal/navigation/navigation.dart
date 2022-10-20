@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/presentation/pages/datafromAPI_screen.dart';
-import 'package:flutter_gpotter/presentation/pages/elixirs_pages/elixirs_screen.dart';
-import 'package:flutter_gpotter/presentation/pages/houses_pages/houses_screen.dart';
-import 'package:flutter_gpotter/presentation/pages/spels_pages/spels_screen.dart';
-import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizarts_screen.dart';
-
 import '../../presentation/pages/data_favorite_screen.dart';
 
 class NavigatorsPages {

@@ -24,15 +24,15 @@ class _$Swagger extends Swagger {
     String? inventorFullName,
     String? manufacturer,
   }) {
-    final $url = '/Elixirs';
-    final $params = <String, dynamic>{
+    final String $url = '/Elixirs';
+    final Map<String, dynamic> $params = <String, dynamic>{
       'Name': name,
       'Difficulty': difficulty,
       'Ingredient': ingredient,
       'InventorFullName': inventorFullName,
       'Manufacturer': manufacturer,
     };
-    final $request = Request(
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
@@ -43,8 +43,8 @@ class _$Swagger extends Swagger {
 
   @override
   Future<Response<ElixirDto>> _elixirsIdGet({required String? id}) {
-    final $url = '/Elixirs/${id}';
-    final $request = Request(
+    final String $url = '/Elixirs/${id}';
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
@@ -54,9 +54,9 @@ class _$Swagger extends Swagger {
 
   @override
   Future<Response<Unit>> _feedbackPost({required SendFeedbackCommand? body}) {
-    final $url = '/Feedback';
+    final String $url = '/Feedback';
     final $body = body;
-    final $request = Request(
+    final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
@@ -67,9 +67,9 @@ class _$Swagger extends Swagger {
 
   @override
   Future<Response<List<HouseDto>>> _housesGet({GetHousesQuery? query}) {
-    final $url = '/Houses';
-    final $params = <String, dynamic>{'query': query};
-    final $request = Request(
+    final String $url = '/Houses';
+    final Map<String, dynamic> $params = <String, dynamic>{'query': query};
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
@@ -80,8 +80,8 @@ class _$Swagger extends Swagger {
 
   @override
   Future<Response<HouseDto>> _housesIdGet({required String? id}) {
-    final $url = '/Houses/${id}';
-    final $request = Request(
+    final String $url = '/Houses/${id}';
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
@@ -91,9 +91,9 @@ class _$Swagger extends Swagger {
 
   @override
   Future<Response<List<IngredientDto>>> _ingredientsGet({String? name}) {
-    final $url = '/Ingredients';
-    final $params = <String, dynamic>{'Name': name};
-    final $request = Request(
+    final String $url = '/Ingredients';
+    final Map<String, dynamic> $params = <String, dynamic>{'Name': name};
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
@@ -104,8 +104,8 @@ class _$Swagger extends Swagger {
 
   @override
   Future<Response<IngredientDto>> _ingredientsIdGet({required String? id}) {
-    final $url = '/Ingredients/${id}';
-    final $request = Request(
+    final String $url = '/Ingredients/${id}';
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
@@ -119,13 +119,13 @@ class _$Swagger extends Swagger {
     String? type,
     String? incantation,
   }) {
-    final $url = '/Spells';
-    final $params = <String, dynamic>{
+    final String $url = '/Spells';
+    final Map<String, dynamic> $params = <String, dynamic>{
       'Name': name,
       'Type': type,
       'Incantation': incantation,
     };
-    final $request = Request(
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
@@ -136,8 +136,8 @@ class _$Swagger extends Swagger {
 
   @override
   Future<Response<SpellDto>> _spellsIdGet({required String? id}) {
-    final $url = '/Spells/${id}';
-    final $request = Request(
+    final String $url = '/Spells/${id}';
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
@@ -150,12 +150,12 @@ class _$Swagger extends Swagger {
     String? firstName,
     String? lastName,
   }) {
-    final $url = '/Wizards';
-    final $params = <String, dynamic>{
+    final String $url = '/Wizards';
+    final Map<String, dynamic> $params = <String, dynamic>{
       'FirstName': firstName,
       'LastName': lastName,
     };
-    final $request = Request(
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
@@ -166,8 +166,8 @@ class _$Swagger extends Swagger {
 
   @override
   Future<Response<WizardDto>> _wizardsIdGet({required String? id}) {
-    final $url = '/Wizards/${id}';
-    final $request = Request(
+    final String $url = '/Wizards/${id}';
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,

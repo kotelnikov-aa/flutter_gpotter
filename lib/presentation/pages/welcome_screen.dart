@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/internal/constants/Colors.dart';
-import 'package:flutter_gpotter/presentation/pages/windgets/potter_button.dart';
+import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override

@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/generated/hive_storage/hive_storage.dart';
 import 'package:flutter_gpotter/internal/constants/Colors.dart';
 import 'package:flutter_gpotter/presentation/pages/tab_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -12,11 +11,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,3 +32,4 @@ class MyApp extends StatelessWidget {
 }
 
 // dart pub global activate flutterfire_cli
+// flutter pub run build_runner build 
