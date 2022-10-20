@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gpotter/internal/constants/Colors.dart';
 import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/internal/navigation/navigation.dart';
+import 'package:flutter_gpotter/internal/search_page.dart';
 
 late User loggedinUser;
 
@@ -74,6 +75,20 @@ class _TabScreenState extends State<TabScreen> {
             ? secondaryColor
             : secondaryColorLight),
         actions: [
+          IconButton(
+              onPressed: () {
+
+                Navigator.of(context)
+                    .push(MaterialPageRoute(
+                    builder: (_) => const SearchPage()));
+                changeFavorite();
+              },
+              icon: const Icon(Icons.search),
+              color: (StatusSettings.change.sortingListStatus
+                  ? primaryColor
+                  : StatusSettings.change.favoriteSccreenStatus
+                  ? secondaryColorLight
+                  : secondaryColor)),
           TextButton(
             onPressed: (() {
               chanheSorting();
