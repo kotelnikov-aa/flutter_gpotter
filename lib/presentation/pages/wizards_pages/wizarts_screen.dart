@@ -16,6 +16,12 @@ class WizartsScreen extends StatelessWidget {
     if (StatusSettings.change.sortingListStatus == true) {
       wizarts.sort((a, b) => a.firstName!.compareTo(b.firstName!));
     }
+
+    // поиск подстроки
+    if (StatusSettings.change.searchText.isNotEmpty) {
+      wizarts.removeWhere((item) => !item.firstName!.contains(StatusSettings.change.searchText));
+    }
+
     return ListView.builder(
       scrollDirection: Axis.vertical,
       itemCount: wizarts.length,

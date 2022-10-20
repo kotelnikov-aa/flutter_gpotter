@@ -22,11 +22,17 @@ class StatusSettings {
   StatusSettings._();
   bool _favoriteSccreenStatus = false;
   bool _sortingListStatus = false;
+  String _searchText = '';
   static final StatusSettings change = StatusSettings._();
 
   bool get favoriteSccreenStatus => _favoriteSccreenStatus;
   bool get sortingListStatus => _sortingListStatus;
+  String get searchText => _searchText;
+
+  set searchText(String value) => _searchText = value;
   set favoriteSccreenStatus(bool value) => _favoriteSccreenStatus = value;
+
+
   set sortingListStatus(bool value) => _sortingListStatus = value;
 }
 

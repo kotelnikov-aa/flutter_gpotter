@@ -16,6 +16,11 @@ class ElixirsScreen extends StatelessWidget {
     if (StatusSettings.change.sortingListStatus == true) {
       elixirs.sort((a, b) => a.name!.compareTo(b.name!));
     }
+    // поиск подстроки
+    if (StatusSettings.change.searchText.isNotEmpty) {
+        elixirs.removeWhere((item) => !item.name!.contains(StatusSettings.change.searchText));
+      }
+
     return ListView.builder(
       scrollDirection: Axis.vertical,
       itemCount: elixirs.length,
