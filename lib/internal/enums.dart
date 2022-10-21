@@ -24,6 +24,7 @@ class StatusSettings {
   StatusSettings._();
   bool _favoriteSccreenStatus = false;
   bool _sortingListStatus = false;
+  String _searchText = '';
   late List<ElixirDto> _elixirs;
   late List<HouseDto> _houses;
   late List<SpellDto> _spels;
@@ -38,6 +39,8 @@ class StatusSettings {
 
   bool get favoriteSccreenStatus => _favoriteSccreenStatus;
   bool get sortingListStatus => _sortingListStatus;
+  String get searchText => _searchText;
+
 
   set elixirs(List<ElixirDto> value) => _elixirs = value;
   set houses(List<HouseDto> value) => _houses = value;
@@ -46,6 +49,7 @@ class StatusSettings {
 
   set favoriteSccreenStatus(bool value) => _favoriteSccreenStatus = value;
   set sortingListStatus(bool value) => _sortingListStatus = value;
+  set searchText(String value) => _searchText = value;
 }
 
 enum DataAPI {

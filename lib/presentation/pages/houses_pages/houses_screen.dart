@@ -16,6 +16,10 @@ class HousesScreen extends StatelessWidget {
     if (StatusSettings.change.sortingListStatus == true) {
       houses.sort((a, b) => a.name!.compareTo(b.name!));
     }
+    // поиск подстроки
+    if (StatusSettings.change.searchText.isNotEmpty) {
+      houses.removeWhere((item) => !item.name!.contains(StatusSettings.change.searchText));
+    }
     return ListView.builder(
       scrollDirection: Axis.vertical,
       itemCount: houses.length,
