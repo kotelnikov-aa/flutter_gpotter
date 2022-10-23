@@ -41,7 +41,6 @@ class StatusSettings {
   bool get sortingListStatus => _sortingListStatus;
   String get searchText => _searchText;
 
-
   set elixirs(List<ElixirDto> value) => _elixirs = value;
   set houses(List<HouseDto> value) => _houses = value;
   set spels(List<SpellDto> value) => _spels = value;

@@ -3,9 +3,9 @@ import 'package:flutter_gpotter/presentation/pages/favorite_button.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/back_button.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
-import '../../../internal/enums.dart';
 import '../../../internal/share_screen.dart';
 import 'elixirs_delail_info_page.dart';
+import 'package:flutter_gpotter/internal/enums.dart';
 
 class ElixirCardScreen extends StatelessWidget {
   final ElixirDto elixir;
@@ -35,7 +35,7 @@ class ElixirCardScreen extends StatelessWidget {
             child: const BottonPotter(value: 'send info'),
           ),
           const SizedBox(height: 10),
-          const BackButtonPotter(),
+          const BackButtonPotterFromFavorite(apiKey: DataAPI.elixirs),
         ],
       ),
     );

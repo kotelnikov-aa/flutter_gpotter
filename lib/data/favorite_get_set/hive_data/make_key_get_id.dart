@@ -1,6 +1,4 @@
-
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
-
 import '../../../generated/hive_storage/hive_storage.dart';
 
 makeKeyfromApiInstance(Object value) {

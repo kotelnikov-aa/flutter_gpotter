@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
+import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
 
 import '../../../internal/share_screen.dart';
@@ -32,7 +33,7 @@ class HousesCardScreen extends StatelessWidget {
             },
             child: const BottonPotter(value: 'send info'),
           ),
-          const BackButtonPotter(),
+          const BackButtonPotter(apiKey: DataAPI.houses),
         ],
       ),
     );

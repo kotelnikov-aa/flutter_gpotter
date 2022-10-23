@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
-import 'package:flutter_gpotter/internal/constants/Colors.dart';
+import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
 import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizarts_detail_info_page.dart';
 import '../../../internal/share_screen.dart';
@@ -30,7 +30,7 @@ class WizartsCardScreen extends StatelessWidget {
             },
             child: const BottonPotter(value: 'send info'),
           ),
-          const BackButtonPotter(),
+          const BackButtonPotter(apiKey: DataAPI.wizarts),
         ],
       ),
     );

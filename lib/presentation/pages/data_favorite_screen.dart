@@ -12,6 +12,7 @@ import '../../internal/enums.dart';
 class DataFavoriteScreen extends StatelessWidget {
   const DataFavoriteScreen({super.key, required this.dataApi});
   final DataAPI dataApi;
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -32,7 +33,6 @@ class DataFavoriteScreen extends StatelessWidget {
               case DataAPI.houses:
                 final data = snapshot.data as List<HouseDto>;
                 return HousesScreen(houses: data);
-
               case DataAPI.spels:
                 final data = snapshot.data as List<SpellDto>;
                 return SpelsScreen(spels: data);

@@ -16,8 +16,10 @@ class TabScreen extends StatefulWidget {
 
 class _TabScreenState extends State<TabScreen> {
   int _currentIndex = 0;
-  NavigatorsPages navigatorsPages = NavigatorsPages();
   final _auth = FirebaseAuth.instance;
+  List<Widget> stackList = NavigatorList.getPages();
+  Color backColor = secondaryColorLight;
+  Color mainColor = secondaryColor;
 
   @override
   void initState() {
@@ -25,26 +27,41 @@ class _TabScreenState extends State<TabScreen> {
     getCurrentUser();
   }
 
+  List<Widget> changeStackList() {
+    List<Widget> stack;
+    StatusSettings.change.favoriteSccreenStatus
+        ? stack = NavigatorList.getFavoritePages()
+        : stack = NavigatorList.getPages();
+    return stack;
+  }
+
   void changeTab(int index) {
     setState(() {
       _currentIndex = index;
-      navigatorsPages.currentpagekey = NavigatorsPages.keyspages[index];
     });
   }
 
   void changeFavorite() {
     setState(() {
-      navigatorsPages.currentpagekey = NavigatorsPages.keyspages[_currentIndex];
-      StatusSettings.change.favoriteSccreenStatus =
-          StatusSettings.change.favoriteSccreenStatus ? false : true;
+      if (StatusSettings.change.favoriteSccreenStatus) {
+        StatusSettings.change.favoriteSccreenStatus = false;
+
+        backColor = secondaryColorLight;
+        mainColor = secondaryColor;
+      } else {
+        StatusSettings.change.favoriteSccreenStatus = true;
+        backColor = secondaryColor;
+        mainColor = secondaryColorLight;
+      }
+      stackList = changeStackList();
     });
   }
 
   void chanheSorting() {
-    changeTab(_currentIndex);
     setState(() {
       StatusSettings.change.sortingListStatus =
           StatusSettings.change.sortingListStatus ? false : true;
+      stackList = changeStackList();
     });
   }
 
@@ -71,24 +88,17 @@ class _TabScreenState extends State<TabScreen> {
               : 'main screen',
           style: Theme.of(context).textTheme.headline6,
         ),
-        backgroundColor: (StatusSettings.change.favoriteSccreenStatus
-            ? secondaryColor
-            : secondaryColorLight),
+        backgroundColor: backColor,
         actions: [
           IconButton(
-              onPressed: () {
-
-                Navigator.of(context)
-                    .push(MaterialPageRoute(
-                    builder: (_) => const SearchPage()));
-                changeFavorite();
-              },
-              icon: const Icon(Icons.search),
-              color: (StatusSettings.change.sortingListStatus
-                  ? primaryColor
-                  : StatusSettings.change.favoriteSccreenStatus
-                  ? secondaryColorLight
-                  : secondaryColor)),
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => const SearchPage()));
+              changeFavorite();
+            },
+            icon: const Icon(Icons.search),
+            color: mainColor,
+          ),
           TextButton(
             onPressed: (() {
               chanheSorting();
@@ -97,9 +107,7 @@ class _TabScreenState extends State<TabScreen> {
               Icons.list,
               color: (StatusSettings.change.sortingListStatus
                   ? primaryColor
-                  : StatusSettings.change.favoriteSccreenStatus
-                      ? secondaryColorLight
-                      : secondaryColor),
+                  : mainColor),
             ),
           ),
           TextButton(
@@ -110,53 +118,24 @@ class _TabScreenState extends State<TabScreen> {
               Icons.star,
               color: (StatusSettings.change.favoriteSccreenStatus
                   ? primaryColor
-                  : secondaryColor),
+                  : mainColor),
             ),
           ),
         ],
       ),
-      body: StatusSettings.change.favoriteSccreenStatus
-          ? IndexedStack(
-              index: _currentIndex,
-              children: navigatorsPages.favoritelistpages,
-            )
-          : IndexedStack(
-              index: _currentIndex,
-              children: navigatorsPages.listpages,
-            ),
+      body: IndexedStack(index: _currentIndex, children: stackList),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: changeTab,
           fixedColor: primaryColorDark,
-          backgroundColor: (StatusSettings.change.favoriteSccreenStatus
-              ? secondaryColor
-              : secondaryColorLight),
+          backgroundColor: backColor,
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
-              label: 'Elixirs',
-              icon: Icon(
-                Icons.drag_indicator_sharp,
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: 'Houses',
-              icon: Icon(
-                Icons.home,
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: 'Spells',
-              icon: Icon(
-                Icons.abc,
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: 'Wizards',
-              icon: Icon(
-                Icons.wallet,
-              ),
-            ),
+                label: 'Elixirs', icon: Icon(Icons.drag_indicator_sharp)),
+            BottomNavigationBarItem(label: 'Houses', icon: Icon(Icons.home)),
+            BottomNavigationBarItem(label: 'Spells', icon: Icon(Icons.abc)),
+            BottomNavigationBarItem(label: 'Wizards', icon: Icon(Icons.wallet)),
           ]),
     );
   }
