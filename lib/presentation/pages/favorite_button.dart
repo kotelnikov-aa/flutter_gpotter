@@ -20,7 +20,7 @@ class _FaviriteButtonChangeState extends State<FaviriteButtonChange> {
   Future<void> _boxinit() async {
     box = await getBoxHive(widget.value);
     if (box.isOpen) {
-      bool isfavorite = await _getFavorite();
+      bool isfavorite = _getFavorite();
       setState(
         () {
           isfavorite
@@ -31,10 +31,10 @@ class _FaviriteButtonChangeState extends State<FaviriteButtonChange> {
     }
   }
 
-  Future<bool> _getFavorite() async {
-    late bool res;
+  bool _getFavorite() {
+    bool res;
     String id = getIdfromApiInstance(widget.value);
-    await box.containsKey(id) ? res = true : res = false;
+    box.containsKey(id) ? res = true : res = false;
     return res;
   }
 

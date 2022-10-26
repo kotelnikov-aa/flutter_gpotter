@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
-import 'package:flutter_gpotter/internal/constants/Colors.dart';
+import 'package:flutter_gpotter/internal/constants/colors.dart';
 import 'package:flutter_gpotter/presentation/pages/wizards_pages/valid_name.dart';
 
 class WizartsDetailInfoView extends StatelessWidget {

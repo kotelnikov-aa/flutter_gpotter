@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
-
-import '../../../internal/constants/Colors.dart';
+import '../../../internal/constants/colors.dart';
 
 class ElixirsDetailInfoView extends StatelessWidget {
   final ElixirDto elixir;

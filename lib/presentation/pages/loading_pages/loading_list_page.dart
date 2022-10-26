@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../internal/constants/Colors.dart';
+import '../../../internal/constants/colors.dart';
 
 //!!!добавить тени
 class LoadingPage extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/internal/enums.dart';
-import 'package:flutter_gpotter/presentation/pages/datafromAPI_screen.dart';
+import 'package:flutter_gpotter/presentation/pages/datafrom_api_screen.dart';
 import '../../presentation/pages/data_favorite_screen.dart';
 
 class NavigatorList {

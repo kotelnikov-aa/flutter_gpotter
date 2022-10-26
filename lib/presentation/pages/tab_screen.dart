@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_gpotter/internal/constants/Colors.dart';
+import 'package:flutter_gpotter/internal/constants/colors.dart';
 import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/internal/navigation/navigation.dart';
 import 'package:flutter_gpotter/internal/search_page.dart';

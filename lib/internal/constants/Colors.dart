@@ -22,6 +22,26 @@ ThemeData myTheme() => ThemeData(
       brightness: Brightness.light,
       // backgroundColor: const Color.fromARGB(255, 180, 200, 160),
       backgroundColor: const Color.fromARGB(255, 108, 180, 116),
+      //textfield
+      textSelectionTheme:
+          const TextSelectionThemeData(cursorColor: primaryColor),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: false,
+        fillColor: primaryColorLight,
+        focusColor: primaryColorLight,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        labelStyle: const TextStyle(color: secondaryColorDark),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16.0),
+          borderSide: const BorderSide(color: secondaryColorLight),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.grey),
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+      ),
       cardTheme: const CardTheme(
         clipBehavior: Clip.antiAlias,
         // color: secondaryColor,

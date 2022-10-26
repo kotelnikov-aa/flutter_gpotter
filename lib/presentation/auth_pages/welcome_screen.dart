@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/internal/constants/Colors.dart';
+import 'package:flutter_gpotter/internal/constants/colors.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
 
-class WelcomeScreen extends StatefulWidget {
-  @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
-}
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +14,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+            children: [
               Text(
                 'Dear Friends, welcome to Harry Potter the wizarding world! Please enter to authorization',
                 softWrap: true,

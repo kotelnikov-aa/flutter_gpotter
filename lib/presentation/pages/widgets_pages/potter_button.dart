@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/internal/constants/Colors.dart';
+import 'package:flutter_gpotter/internal/constants/colors.dart';
 
 class BottonPotter extends StatelessWidget {
   const BottonPotter({super.key, required this.value});

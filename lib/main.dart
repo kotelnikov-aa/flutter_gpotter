@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/internal/constants/Colors.dart';
+import 'package:flutter_gpotter/internal/constants/colors.dart';
 import 'package:flutter_gpotter/presentation/pages/tab_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'presentation/auth_pages/login_screen.dart';
