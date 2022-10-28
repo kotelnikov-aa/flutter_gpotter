@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
 import 'package:flutter_gpotter/internal/constants/colors.dart';
+import 'package:flutter_gpotter/presentation/pages/widgets_pages/card_in_card.dart';
+import 'package:flutter_gpotter/presentation/pages/widgets_pages/text_my_head_body.dart';
 import 'package:flutter_gpotter/presentation/pages/wizards_pages/valid_name.dart';
 
 class WizartsDetailInfoView extends StatelessWidget {
@@ -11,18 +13,18 @@ class WizartsDetailInfoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderradiusCard)),
       elevation: elevationAll,
       child: Padding(
-        padding: const EdgeInsets.only(left: 3.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ValidFirstNameWidget(value: wizarts.firstName ?? ''),
-            Text(wizarts.lastName ?? ''),
-            const SizedBox(height: 5),
-            _ViewIngredients(values: wizarts.elixirs!),
+            TextHeadline1(value: validName(wizarts.firstName ?? '')),
+            TextHeadline1(value: wizarts.lastName ?? ''),
+            CardInCard(value: [_ViewIngredients(values: wizarts.elixirs!)]),
           ],
         ),
       ),
@@ -37,25 +39,17 @@ class _ViewIngredients extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return values.isEmpty
-        ? const Text('not elixirs in her person')
+        ? const TextBody1(value: 'not elixirs in her person')
         : Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('elixirs:'),
+              const TextBody1(value: 'elixirs:'),
               ListView.builder(
                 shrinkWrap: true,
                 padding: const EdgeInsets.all(8),
                 itemCount: values.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Text(values[index].name ?? ''),
-                      ),
-                    ],
-                  );
-                },
+                itemBuilder: (BuildContext context, int index) =>
+                    TextBody1(value: values[index].name ?? ''),
               ),
             ],
           );

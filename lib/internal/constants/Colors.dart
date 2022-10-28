@@ -15,6 +15,7 @@ const secondaryColorDark = Color(0xFF4c503a);
 
 const borderradiusCard = 16.0;
 const elevationAll = 1.0;
+const colorCardTwo = Color.fromARGB(255, 172, 251, 251);
 
 ThemeData myTheme() => ThemeData(
       // scaffoldBackgroundColor: const Color.fromARGB(255, 180, 200, 160),

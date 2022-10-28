@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
 import 'package:flutter_gpotter/internal/constants/colors.dart';
+import 'package:flutter_gpotter/presentation/pages/widgets_pages/text_my_head_body.dart';
 
 class HousesShortInfoView extends StatelessWidget {
   final HouseDto value;
@@ -13,36 +14,16 @@ class HousesShortInfoView extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderradiusCard)),
       elevation: elevationAll,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              value.name ?? '',
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.headline6,
-            ),
+            TextHeadline1(value: value.name ?? ''),
             const SizedBox(height: 5),
-            Container(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                'Effect - ${value.commonRoom}',
-                textAlign: TextAlign.left,
-                softWrap: true,
-                style: Theme.of(context).textTheme.subtitle1,
-              ),
-            ),
+            TextBody1(value: 'Effect - ${value.commonRoom}'),
             const SizedBox(height: 5),
-            Container(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                value.ghost.toString(),
-                textAlign: TextAlign.left,
-                softWrap: true,
-                style: Theme.of(context).textTheme.subtitle1,
-              ),
-            ),
+            TextBody1(value: value.ghost.toString()),
           ],
         ),
       ),

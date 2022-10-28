@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
       initialRoute: 'welcome_screen',
       theme: myTheme(),
       routes: {
-        'welcome_screen': (context) => WelcomeScreen(),
-        'registration_screen': (context) => RegistrationScreen(),
-        'login_screen': (context) => LoginScreen(),
+        'welcome_screen': (context) => const WelcomeScreen(),
+        'registration_screen': (context) => const RegistrationScreen(),
+        'login_screen': (context) => const LoginScreen(),
         'home_screen': (context) => const TabScreen(),
       },
     );

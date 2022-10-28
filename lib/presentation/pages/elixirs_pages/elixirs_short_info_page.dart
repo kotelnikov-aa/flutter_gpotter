@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
 import 'package:flutter_gpotter/internal/constants/colors.dart';
+import 'package:flutter_gpotter/presentation/pages/widgets_pages/text_my_head_body.dart';
 
 class ElixirsShortInfoView extends StatelessWidget {
   final ElixirDto value;
@@ -18,31 +19,12 @@ class ElixirsShortInfoView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              value.name ?? '',
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.headline6,
-            ),
+            TextHeadline1(value: value.name ?? ''),
             const SizedBox(height: 5),
-            Container(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                'Effect - ${value.effect}',
-                textAlign: TextAlign.left,
-                softWrap: true,
-                style: Theme.of(context).textTheme.subtitle1,
-              ),
-            ),
+            TextBody1(value: 'Effect: ${value.effect}'),
             const SizedBox(height: 5),
-            Container(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                value.difficulty.toString(),
-                textAlign: TextAlign.left,
-                softWrap: true,
-                style: Theme.of(context).textTheme.subtitle1,
-              ),
-            ),
+            TextBody1(
+                value: 'characteristics: ${value.characteristics.toString()}'),
           ],
         ),
       ),

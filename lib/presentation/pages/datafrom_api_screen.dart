@@ -114,3 +114,5 @@ class _DataScreenState extends State<DataScreen> {
     }
   }
 }
+
+// init если загружены данные то .. если нет load()

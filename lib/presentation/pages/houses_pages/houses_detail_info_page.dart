@@ -1,38 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
 import 'package:flutter_gpotter/internal/constants/colors.dart';
+import 'package:flutter_gpotter/presentation/pages/widgets_pages/card_in_card.dart';
+import 'package:flutter_gpotter/presentation/pages/widgets_pages/text_my_head_body.dart';
 
 class HousesDetailInfoView extends StatelessWidget {
   final HouseDto houses;
 
   const HousesDetailInfoView({super.key, required this.houses});
-
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderradiusCard)),
       elevation: elevationAll,
       child: Padding(
-        padding: const EdgeInsets.only(left: 3.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(
-                alignment: Alignment.bottomCenter,
-                child: Text(houses.name ?? ' ')),
-            Text('Colours- ${houses.houseColours ?? ''}',
-                textAlign: TextAlign.left, softWrap: true),
-            Text('Commonroom- ${houses.commonRoom ?? ''}',
-                textAlign: TextAlign.left, softWrap: true),
-            Text('element- ${houses.element ?? ''}',
-                textAlign: TextAlign.left, softWrap: true),
-            Text('founder- ${houses.founder ?? ''}',
-                textAlign: TextAlign.left, softWrap: true),
-            Text('ghost- ${houses.ghost ?? ''}',
-                textAlign: TextAlign.left, softWrap: true),
-            _ViewHeads(values: houses.heads!),
-            _ViewTraits(values: houses.traits!),
+            TextHeadline1(value: houses.name ?? ' '),
+            TextBody1(value: 'Commonroom- ${houses.commonRoom ?? ''}'),
+            CardInCard(value: [
+              TextBody1(value: 'element- ${houses.element ?? ''}'),
+              TextBody1(value: 'founder- ${houses.founder ?? ''}'),
+            ]),
+            TextBody1(value: 'ghost- ${houses.ghost ?? ''}'),
+            CardInCard(value: [_ViewHeads(values: houses.heads!)]),
+            CardInCard(value: [
+              _ViewTraits(values: houses.traits!),
+            ]),
           ],
         ),
       ),
@@ -43,32 +41,22 @@ class HousesDetailInfoView extends StatelessWidget {
 class _ViewHeads extends StatelessWidget {
   final List<HouseHeadDto> values;
   const _ViewHeads({required this.values});
-
   @override
   Widget build(BuildContext context) {
     return values.isEmpty
-        ? const Text('not house head')
+        ? const TextBody1(value: 'not house head')
         : Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('House heads:'),
+              const TextBody1(value: 'House heads: '),
               ListView.builder(
                 shrinkWrap: true,
                 padding: const EdgeInsets.all(8),
                 itemCount: values.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Text(
-                            '${values[index].firstName ?? ''} ${values[index].lastName ?? ''}',
-                            textAlign: TextAlign.left,
-                            softWrap: true),
-                      ),
-                    ],
-                  );
-                },
+                itemBuilder: (BuildContext context, int index) => TextBody1(
+                  value:
+                      '${values[index].firstName ?? ''} ${values[index].lastName ?? ''}',
+                ),
               ),
             ],
           );
@@ -78,31 +66,33 @@ class _ViewHeads extends StatelessWidget {
 class _ViewTraits extends StatelessWidget {
   final List<TraitDto> values;
   const _ViewTraits({required this.values});
-
   @override
   Widget build(BuildContext context) {
     return values.isEmpty
-        ? const Text('not traits in this elixir')
-        : Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text('House traits:'),
-              ListView.builder(
-                shrinkWrap: true,
-                padding: const EdgeInsets.all(8),
-                itemCount: values.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: _TraitName(value: values[index].name!),
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ],
+        ? const TextBody1(value: 'not traits in this elixir')
+        : Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const TextBody1(value: 'House traits:'),
+                ListView.builder(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.all(8),
+                  itemCount: values.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.bottomLeft,
+                          child: _TraitName(value: values[index].name!),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ],
+            ),
           );
   }
 }
@@ -113,6 +103,6 @@ class _TraitName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var result = value.name;
-    return Text(result);
+    return TextBody1(value: result);
   }
 }
