@@ -93,8 +93,8 @@ class _TabScreenState extends State<TabScreen> {
           IconButton(
             onPressed: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => const SearchPage()));
-              changeFavorite();
+                  .push(MaterialPageRoute(builder: (_) =>  SearchPage(currentIndex: _currentIndex)));
+
             },
             icon: const Icon(Icons.search),
             color: mainColor,
