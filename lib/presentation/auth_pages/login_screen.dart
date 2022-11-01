@@ -1,7 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:flutter/material.dart';
+
+import 'login_mobx_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,6 +20,20 @@ class _LoginScreenState extends State<LoginScreen> {
   late String email;
   late String password;
   bool showSpinner = false;
+  final eCheck = EmailCheck();
+
+  @override
+  void initState() {
+    eCheck.setupValidators();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    eCheck.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,22 +50,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: Theme.of(context).textTheme.headline4,
               ),
               const SizedBox(height: 15.0),
-              TextField(
-                decoration: const InputDecoration(labelText: 'enter email'),
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                },
+              Observer(
+                builder: (_) => TextField(
+                  decoration: InputDecoration(
+                      labelText: 'enter email', errorText: eCheck.error.email),
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) => eCheck.email = value,
+                ),
               ),
               const SizedBox(height: 15.0),
-              TextField(
-                obscureText: true,
-                decoration: const InputDecoration(labelText: 'enter password'),
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  password = value;
-                },
+              Observer(
+                builder: (_) => TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      labelText: 'enter password',
+                      errorText: eCheck.error.password),
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    password = value;
+                  },
+                ),
               ),
               const SizedBox(height: 15.0),
               GestureDetector(
@@ -63,7 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.pushNamed(context, 'home_screen');
                     }
                   } catch (e) {
-                    print(e);
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(e.toString()),
+                    ));
                   }
                   setState(() {
                     showSpinner = false;
