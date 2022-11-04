@@ -1,7 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:flutter/material.dart';
+
+import '../../generated/mobx/mail_validator.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,9 +16,20 @@ class LoginScreen extends StatefulWidget {
 final _auth = FirebaseAuth.instance;
 
 class _LoginScreenState extends State<LoginScreen> {
-  late String email;
-  late String password;
+  final mailCheck = EmailCheck();
   bool showSpinner = false;
+
+  @override
+  void initState() {
+    super.initState();
+    mailCheck.setupValidators();
+  }
+
+  @override
+  void dispose() {
+    mailCheck.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,18 +47,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: Theme.of(context).textTheme.headline4,
               ),
               const SizedBox(height: 15.0),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) => email = value,
+              Observer(
+                builder: (_) => TextField(
+                  decoration: InputDecoration(
+                      labelText: 'email',
+                      hintText: 'enter email',
+                      errorText: mailCheck.error.email),
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) => mailCheck.email = value,
+                ),
               ),
               const SizedBox(height: 15.0),
-              TextField(
-                obscureText: true,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  password = value;
-                },
+              Observer(
+                builder: (_) => TextField(
+                  decoration: InputDecoration(
+                      labelText: 'password',
+                      hintText: 'enter password min 8 characteres',
+                      errorText: mailCheck.error.password),
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) => mailCheck.password = value,
+                ),
               ),
               const SizedBox(height: 15.0),
               GestureDetector(
@@ -55,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   });
                   try {
                     final user = await _auth.signInWithEmailAndPassword(
-                        email: email, password: password);
+                        email: mailCheck.email, password: mailCheck.password);
                     if (user != null) {
                       Navigator.pushNamed(context, 'home_screen');
                     }
