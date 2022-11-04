@@ -6,23 +6,21 @@ import 'package:local_auth/local_auth.dart';
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
-
   Future<void> _authenticateWithBiometrics(BuildContext context) async {
     bool authenticated = false;
     final LocalAuthentication auth = LocalAuthentication();
     authenticated = await auth.authenticate(
-        localizedReason:
-        'Scan your fingerprint (or face or whatever) to authenticate',
-        options: const AuthenticationOptions(
-          stickyAuth: true,
-          biometricOnly: true,
-        ),
-      );
+      localizedReason:
+          'Scan your fingerprint (or face or whatever) to authenticate',
+      options: const AuthenticationOptions(
+        stickyAuth: true,
+        biometricOnly: true,
+      ),
+    );
     if (authenticated) {
       Navigator.pushNamed(context, 'home_screen');
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +50,8 @@ class WelcomeScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamed(context, 'registration_screen');
                 },
-              ),GestureDetector(
+              ),
+              GestureDetector(
                 child: const BottonPotter(value: 'biometric'),
                 onTap: () {
                   _authenticateWithBiometrics(context);
