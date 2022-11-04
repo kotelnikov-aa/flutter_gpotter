@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
 import '../pages/widgets_pages/potter_button.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -68,7 +67,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           Navigator.pushNamed(context, 'home_screen');
                         }
                       } catch (e) {
-                        print(e);
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(e.toString()),
+                        ));
                       }
                       setState(() {
                         showSpinner = false;
