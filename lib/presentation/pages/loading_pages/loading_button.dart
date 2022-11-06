@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gpotter/internal/constants/app_colors.dart';
+import 'package:flutter_gpotter/main.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../../internal/constants/colors.dart';
 
 class LoadingButton extends StatelessWidget {
   const LoadingButton({super.key});
@@ -12,15 +12,20 @@ class LoadingButton extends StatelessWidget {
       baseColor: primaryColorLight,
       highlightColor: secondaryColorLight,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: secondaryColorLight,
-            borderRadius: BorderRadius.circular(borderradiusCard),
+        padding: EdgeInsets.all(
+            DataFromScreenSize.getCardPadding(getScreenSize(context).index)),
+        child: AspectRatio(
+          aspectRatio: 12 / 1,
+          child: Container(
+            decoration: BoxDecoration(
+              color: secondaryColorLight,
+              borderRadius: BorderRadius.circular(
+                  DataFromScreenSize.getRadius(getScreenSize(context).index)),
+            ),
+            // width: MediaQuery.of(context).size.width - 10.0,
+            // height: 40,
+            alignment: Alignment.center,
           ),
-          width: MediaQuery.of(context).size.width - 10.0,
-          height: 40,
-          alignment: Alignment.center,
         ),
       ),
     );

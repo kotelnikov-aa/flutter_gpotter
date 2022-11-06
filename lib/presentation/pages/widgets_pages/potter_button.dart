@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/internal/constants/colors.dart';
+import 'package:flutter_gpotter/internal/constants/app_colors.dart';
+import 'package:flutter_gpotter/main.dart';
 
 class BottonPotter extends StatelessWidget {
   const BottonPotter({super.key, required this.value});
@@ -7,16 +8,20 @@ class BottonPotter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: secondaryColorLight,
-          borderRadius: BorderRadius.circular(borderradiusCard),
+      padding: EdgeInsets.all(
+          DataFromScreenSize.getCardPadding(getScreenSize(context).index)),
+      child: AspectRatio(
+        aspectRatio: 12 / 1,
+        child: Container(
+          decoration: BoxDecoration(
+            color: secondaryColorLight,
+            borderRadius: BorderRadius.circular(
+                DataFromScreenSize.getRadius(getScreenSize(context).index) * 2),
+          ),
+          alignment: Alignment.center,
+          child: Text(value,
+              style: myTheme(getScreenSize(context).index).textTheme.button),
         ),
-        width: MediaQuery.of(context).size.width - 10.0,
-        height: 40,
-        alignment: Alignment.center,
-        child: Text(value, style: Theme.of(context).textTheme.button),
       ),
     );
   }

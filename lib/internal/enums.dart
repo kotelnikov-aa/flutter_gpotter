@@ -64,3 +64,5 @@ enum FavoritePositionState {
   inFavorite,
   notInFavorite,
 }
+
+enum ScreenSize { small, normal, large, extraLarge }

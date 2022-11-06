@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/internal/constants/colors.dart';
 import 'package:flutter_gpotter/presentation/pages/tab_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'internal/constants/app_colors.dart';
+import 'internal/enums.dart';
 import 'presentation/auth_pages/login_screen.dart';
 import 'presentation/auth_pages/signup_screen.dart';
 import 'presentation/auth_pages/welcome_screen.dart';
@@ -16,11 +17,26 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Builder(
+        builder: (BuildContext context) {
+          return const MyApp2();
+        },
+      ),
+    );
+  }
+}
+
+class MyApp2 extends StatelessWidget {
+  const MyApp2({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: 'welcome_screen',
-      theme: myTheme(),
+      theme: myTheme(getScreenSize(context).index),
       routes: {
         'welcome_screen': (context) => const WelcomeScreen(),
         'registration_screen': (context) => const RegistrationScreen(),
@@ -32,4 +48,12 @@ class MyApp extends StatelessWidget {
 }
 
 // dart pub global activate flutterfire_cli
-// flutter pub run build_runner build 
+// flutter pub run build_runner build
+
+ScreenSize getScreenSize(BuildContext context) {
+  double deviceWidth = MediaQuery.of(context).size.shortestSide;
+  if (deviceWidth > 900) return ScreenSize.extraLarge;
+  if (deviceWidth > 600) return ScreenSize.large;
+  if (deviceWidth > 300) return ScreenSize.normal;
+  return ScreenSize.small;
+}

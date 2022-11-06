@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
-import 'package:flutter_gpotter/internal/constants/colors.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/text_my_head_body.dart';
 import 'package:flutter_gpotter/presentation/pages/wizards_pages/valid_name.dart';
 
@@ -11,18 +10,13 @@ class WizartsShortInfoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-      elevation: elevationAll,
-      child: SizedBox(
-        height: 80,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            TextHeadline1(value: validName(value.firstName ?? '')),
-            TextHeadline1(value: value.lastName ?? ''),
-          ],
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TextHeadline1(value: validName(value.firstName ?? '')),
+          TextHeadline1(value: value.lastName ?? ''),
+        ],
       ),
     );
   }

@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/internal/constants/colors.dart';
+import 'package:flutter_gpotter/internal/constants/app_colors.dart';
 import 'package:flutter_gpotter/presentation/pages/elixirs_pages/elixirs_card_screen.dart';
 import 'package:flutter_gpotter/presentation/pages/spels_pages/spels_card_screen.dart';
 import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizarts_card_screen.dart';
 import '../presentation/pages/houses_pages/houses_card_screen.dart';
 import 'enums.dart';
 
-
 class SearchPage extends StatefulWidget {
   int? currentIndex;
 
   SearchPage({required int this.currentIndex, Key? key}) : super(key: key);
 
-
   @override
   _SearchPageState createState() => _SearchPageState();
 }
+
 class _SearchPageState extends State<SearchPage> {
-  final TextEditingController _filter =  TextEditingController();
+  final TextEditingController _filter = TextEditingController();
   Color backColor = secondaryColorLight;
   String _searchText = "";
   late var names;
   late var filteredNames;
-  Icon _searchIcon =  const Icon(Icons.search);
-  Widget _appBarTitle =  const Text( 'Enter Search ' );
+  Icon _searchIcon = const Icon(Icons.search);
+  Widget _appBarTitle = const Text('Enter Search ');
 
   _SearchPageState() {
     _filter.addListener(() {
@@ -43,7 +42,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   void initState() {
     List tempList = [];
-    switch ( widget.currentIndex) {
+    switch (widget.currentIndex) {
       case 0:
         tempList = StatusSettings.change.elixirs;
         break;
@@ -75,26 +74,26 @@ class _SearchPageState extends State<SearchPage> {
         leading: IconButton(
           icon: _searchIcon,
           onPressed: _searchPressed,
-
         ),
       ),
       body: Container(
         decoration: BoxDecoration(
-            color: Colors.white,
-
-            borderRadius: BorderRadius.circular(5)),
+            color: Colors.white, borderRadius: BorderRadius.circular(5)),
         child: _buildList(),
       ),
       resizeToAvoidBottomInset: false,
     );
   }
 
-
   Widget _buildList() {
     if (_searchText.isNotEmpty) {
       List tempList = [];
       for (int i = 0; i < filteredNames.length; i++) {
-        if (filteredNames[i].name!.toString().toLowerCase().contains(_searchText.toLowerCase())) {
+        if (filteredNames[i]
+            .name!
+            .toString()
+            .toLowerCase()
+            .contains(_searchText.toLowerCase())) {
           tempList.add(filteredNames[i]);
         }
       }
@@ -103,43 +102,38 @@ class _SearchPageState extends State<SearchPage> {
     return ListView.builder(
       itemCount: names == null ? 0 : filteredNames.length,
       itemBuilder: (BuildContext context, int index) {
-        return  ListTile(
+        return ListTile(
           hoverColor: colorCardTwo,
           title: Text(filteredNames[index].name!.toString()),
           onTap: () => {_pushPage(filteredNames[index])},
         );
-          },
-        );
-      }
-
+      },
+    );
+  }
 
   void _searchPressed() {
     setState(() {
       if (_searchIcon.icon == Icons.search) {
-        _searchIcon =  const Icon(Icons.close);
-        _appBarTitle =  TextField(
+        _searchIcon = const Icon(Icons.close);
+        _appBarTitle = TextField(
           controller: _filter,
-
-          decoration:  const InputDecoration(
+          decoration: const InputDecoration(
               filled: true,
               fillColor: Colors.white,
-              prefixIcon:  Icon(Icons.search),
-              hintText: 'Search...'
-          ),
+              prefixIcon: Icon(Icons.search),
+              hintText: 'Search...'),
         );
       } else {
         _searchIcon = const Icon(Icons.search);
-        _appBarTitle = const Text( 'Search ' );
+        _appBarTitle = const Text('Search ');
         filteredNames = names;
         _filter.clear();
       }
     });
   }
 
-
-
-  void _pushPage(var value)  {
-    switch ( widget.currentIndex) {
+  void _pushPage(var value) {
+    switch (widget.currentIndex) {
       case 0:
         Navigator.push(
           context,
@@ -170,9 +164,8 @@ class _SearchPageState extends State<SearchPage> {
           MaterialPageRoute(
             builder: (context) => WizartsCardScreen(wizarts: value),
           ),
-        );        break;
+        );
+        break;
     }
   }
-
-
 }

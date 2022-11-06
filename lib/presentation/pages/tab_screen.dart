@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_gpotter/internal/constants/colors.dart';
 import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/internal/navigation/navigation.dart';
 import 'package:flutter_gpotter/internal/search_page.dart';
+import '../../internal/constants/app_colors.dart';
 
 late User loggedinUser;
 
@@ -73,7 +73,11 @@ class _TabScreenState extends State<TabScreen> {
         loggedinUser = user;
       }
     } catch (e) {
-      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toString()),
+        ),
+      );
     }
   }
 
@@ -92,9 +96,8 @@ class _TabScreenState extends State<TabScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) =>  SearchPage(currentIndex: _currentIndex)));
-
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => SearchPage(currentIndex: _currentIndex)));
             },
             icon: const Icon(Icons.search),
             color: mainColor,

@@ -18,10 +18,9 @@ class ElixirCardScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 5),
+          const SizedBox(height: 10),
           ElixirsDetailInfoView(elixir: elixir),
           FaviriteButtonChange(value: elixir),
-          const SizedBox(height: 10),
           GestureDetector(
             onTap: () {
               Navigator.push(
@@ -34,7 +33,6 @@ class ElixirCardScreen extends StatelessWidget {
             },
             child: const BottonPotter(value: 'send info'),
           ),
-          const SizedBox(height: 10),
           const BackButtonPotterFromFavorite(apiKey: DataAPI.elixirs),
         ],
       ),

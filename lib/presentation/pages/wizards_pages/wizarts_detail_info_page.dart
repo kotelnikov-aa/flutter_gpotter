@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
-import 'package:flutter_gpotter/internal/constants/colors.dart';
+import 'package:flutter_gpotter/internal/constants/app_colors.dart';
+import 'package:flutter_gpotter/main.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/card_in_card.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/text_my_head_body.dart';
 import 'package:flutter_gpotter/presentation/pages/wizards_pages/valid_name.dart';
@@ -13,11 +14,9 @@ class WizartsDetailInfoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(borderradiusCard)),
-      elevation: elevationAll,
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(
+            DataFromScreenSize.getCardPadding(getScreenSize(context).index)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
