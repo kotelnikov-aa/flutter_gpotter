@@ -8,7 +8,7 @@ class CardInCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final padding =
-        DataFromScreenSize.getCardPadding(getScreenSize(context).index);
+        DataFromScreenSize.cardPadding[getScreenSize(context).index];
     return Card(
       color: colorCardTwo,
       child: Padding(

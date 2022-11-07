@@ -14,7 +14,7 @@ class HousesDetailInfoView extends StatelessWidget {
     return Card(
       child: Padding(
         padding: EdgeInsets.all(
-            DataFromScreenSize.getCardPadding(getScreenSize(context).index)),
+            DataFromScreenSize.cardPadding[getScreenSize(context).index]),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,16 +70,16 @@ class _ViewTraits extends StatelessWidget {
     return values.isEmpty
         ? const TextBody1(value: 'not traits in this elixir')
         : Padding(
-            padding: EdgeInsets.all(DataFromScreenSize.getCardPadding(
-                getScreenSize(context).index)),
+            padding: EdgeInsets.all(DataFromScreenSize.cardPadding[
+                getScreenSize(context).index]),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const TextBody1(value: 'House traits:'),
                 ListView.builder(
                   shrinkWrap: true,
-                  padding: EdgeInsets.all(DataFromScreenSize.getCardPadding(
-                      getScreenSize(context).index)),
+                  padding: EdgeInsets.all(DataFromScreenSize.cardPadding[
+                      getScreenSize(context).index]),
                   itemCount: values.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Column(

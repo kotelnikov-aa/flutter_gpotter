@@ -50,6 +50,7 @@ dependencies:
   local_auth: ^2.1.2
   get_it: ^7.2.0
   validators: ^3.0.0
+  font_awesome_flutter: ^10.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -13,14 +13,14 @@ class LoadingButton extends StatelessWidget {
       highlightColor: secondaryColorLight,
       child: Padding(
         padding: EdgeInsets.all(
-            DataFromScreenSize.getCardPadding(getScreenSize(context).index)),
+            DataFromScreenSize.cardPadding[getScreenSize(context).index]),
         child: AspectRatio(
           aspectRatio: 12 / 1,
           child: Container(
             decoration: BoxDecoration(
               color: secondaryColorLight,
               borderRadius: BorderRadius.circular(
-                  DataFromScreenSize.getRadius(getScreenSize(context).index)),
+                  DataFromScreenSize.borderRarius[getScreenSize(context).index]),
             ),
             // width: MediaQuery.of(context).size.width - 10.0,
             // height: 40,

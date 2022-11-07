@@ -3,7 +3,6 @@ import 'package:flutter_gpotter/internal/constants/app_colors.dart';
 import 'package:flutter_gpotter/main.dart';
 import 'package:shimmer/shimmer.dart';
 
-//!!!добавить тени
 class LoadingPage extends StatelessWidget {
   const LoadingPage({super.key});
 
@@ -22,9 +21,8 @@ class LoadingPage extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: primaryColor,
-                borderRadius: (BorderRadius.circular(
-                    DataFromScreenSize.getRadius(
-                        getScreenSize(context).index))),
+                borderRadius: (BorderRadius.circular(DataFromScreenSize
+                    .borderRarius[getScreenSize(context).index])),
               ),
             ),
           ),

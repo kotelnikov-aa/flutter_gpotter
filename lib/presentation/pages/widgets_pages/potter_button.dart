@@ -9,14 +9,15 @@ class BottonPotter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(
-          DataFromScreenSize.getCardPadding(getScreenSize(context).index)),
+          DataFromScreenSize.cardPadding[getScreenSize(context).index]),
       child: AspectRatio(
         aspectRatio: 12 / 1,
         child: Container(
           decoration: BoxDecoration(
             color: secondaryColorLight,
             borderRadius: BorderRadius.circular(
-                DataFromScreenSize.getRadius(getScreenSize(context).index) * 2),
+                DataFromScreenSize.borderRarius[getScreenSize(context).index] *
+                    2),
           ),
           alignment: Alignment.center,
           child: Text(value,
