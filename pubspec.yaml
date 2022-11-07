@@ -50,6 +50,9 @@ dependencies:
   local_auth: ^2.1.2
   get_it: ^7.2.0
   validators: ^3.0.0
+  shared_preferences: ^2.0.13
+  provider: ^6.0.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -76,7 +79,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  assets:
+    - assets/images/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

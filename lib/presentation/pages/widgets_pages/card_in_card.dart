@@ -10,7 +10,7 @@ class CardInCard extends StatelessWidget {
     final padding =
         DataFromScreenSize.getCardPadding(getScreenSize(context).index);
     return Card(
-      color: colorCardTwo,
+      color: Theme.of(context).cardTheme.shadowColor,
       child: Padding(
         padding: EdgeInsets.all(padding),
         child: ListView.builder(

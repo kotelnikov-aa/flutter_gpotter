@@ -4,15 +4,29 @@ import 'package:flutter_gpotter/presentation/pages/tab_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'internal/constants/app_colors.dart';
 import 'internal/enums.dart';
+import 'internal/theme.dart';
 import 'presentation/auth_pages/login_screen.dart';
 import 'presentation/auth_pages/signup_screen.dart';
 import 'presentation/auth_pages/welcome_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  final storage = await SharedPreferences.getInstance();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ThemeState(storage),
+        )
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,6 +34,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       home: Builder(
         builder: (BuildContext context) {
@@ -27,6 +42,7 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
+
   }
 }
 
@@ -34,9 +50,13 @@ class MyApp2 extends StatelessWidget {
   const MyApp2({super.key});
   @override
   Widget build(BuildContext context) {
+    return Consumer<ThemeState>(builder: ((context, state, child) {
     return MaterialApp(
+      themeMode: state.theme,
+      debugShowCheckedModeBanner: false,
       initialRoute: 'welcome_screen',
       theme: myTheme(getScreenSize(context).index),
+      darkTheme: myDarkTheme(getScreenSize(context).index),
       routes: {
         'welcome_screen': (context) => const WelcomeScreen(),
         'registration_screen': (context) => const RegistrationScreen(),
@@ -44,6 +64,7 @@ class MyApp2 extends StatelessWidget {
         'home_screen': (context) => const TabScreen()
       },
     );
+    }));
   }
 }
 
