@@ -42,6 +42,7 @@ ThemeData myTheme(int value) {
     inputDecorationTheme: InputDecorationTheme(
       filled: false,
       fillColor: primaryColorLight,
+      iconColor: primaryColorLight,
       focusColor: primaryColorLight,
       border: OutlineInputBorder(
         borderRadius:
@@ -111,6 +112,7 @@ ThemeData myDarkTheme(int value) {
       filled: false,
       fillColor: primaryColorDark,
       focusColor: primaryColorDark,
+      iconColor: primaryColorDark,
       border: OutlineInputBorder(
         borderRadius:
         BorderRadius.circular(DataFromScreenSize.getRadius(value)),

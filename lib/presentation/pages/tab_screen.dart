@@ -115,7 +115,7 @@ class _TabScreenState extends State<TabScreen> {
               Icons.list,
               color: (StatusSettings.change.sortingListStatus
                   ? Theme.of(context).inputDecorationTheme.fillColor
-                  : mainColor),
+                  : Theme.of(context).inputDecorationTheme.iconColor),
             ),
           ),
           TextButton(
@@ -126,7 +126,7 @@ class _TabScreenState extends State<TabScreen> {
               Icons.star,
               color: (StatusSettings.change.favoriteSccreenStatus
                   ? Theme.of(context).inputDecorationTheme.fillColor
-                  : mainColor),
+                  : Theme.of(context).inputDecorationTheme.iconColor),
             ),
           ),
           Switch(
