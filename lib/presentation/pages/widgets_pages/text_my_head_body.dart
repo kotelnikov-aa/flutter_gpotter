@@ -14,7 +14,7 @@ class TextHeadline1 extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             value,
-            style: myTheme(getScreenSize(context).index).textTheme.headline5,
+            style: Theme.of(context).textTheme.headline5,
             textAlign: TextAlign.center,
             softWrap: true,
             //overflow: TextOverflow.ellipsis,

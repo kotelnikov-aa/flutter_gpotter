@@ -3,8 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/internal/navigation/navigation.dart';
 import 'package:flutter_gpotter/internal/search_page.dart';
-import 'package:flutter_gpotter/main.dart';
+import 'package:provider/provider.dart';
 import '../../internal/constants/app_colors.dart';
+import '../../internal/theme.dart';
+import 'package:flutter_gpotter/main.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 late User loggedinUser;
@@ -85,7 +87,10 @@ class _TabScreenState extends State<TabScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = context.watch<ThemeState>();
+
     return Scaffold(
+
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
@@ -94,7 +99,7 @@ class _TabScreenState extends State<TabScreen> {
               : 'main screen',
           // style: myTheme(getScreenSize(context).index).textTheme.headline6,
         ),
-        backgroundColor: backColor,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         actions: [
           IconButton(
             onPressed: () {
@@ -102,7 +107,7 @@ class _TabScreenState extends State<TabScreen> {
                   builder: (_) => SearchPage(currentIndex: _currentIndex)));
             },
             icon: const Icon(Icons.search),
-            color: mainColor,
+            color: Theme.of(context).inputDecorationTheme.fillColor,
           ),
           TextButton(
             onPressed: (() {
@@ -111,8 +116,8 @@ class _TabScreenState extends State<TabScreen> {
             child: Icon(
               Icons.list,
               color: (StatusSettings.change.sortingListStatus
-                  ? primaryColor
-                  : mainColor),
+                  ? Theme.of(context).inputDecorationTheme.fillColor
+                  : Theme.of(context).inputDecorationTheme.iconColor),
             ),
           ),
           TextButton(
@@ -122,9 +127,19 @@ class _TabScreenState extends State<TabScreen> {
             child: FaIcon(
               FontAwesomeIcons.star,
               color: (StatusSettings.change.favoriteSccreenStatus
-                  ? primaryColor
-                  : mainColor),
+                  ? Theme.of(context).inputDecorationTheme.fillColor
+                  : Theme.of(context).inputDecorationTheme.iconColor),
             ),
+          ),
+          Switch(
+            value: themeState.isDark,
+            onChanged: (value) {
+              if (value) {
+                themeState.setDarkTheme();
+              } else {
+                themeState.setLightTheme();
+              }
+            },
           ),
         ],
       ),
@@ -132,8 +147,8 @@ class _TabScreenState extends State<TabScreen> {
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: changeTab,
-          fixedColor: primaryColorDark,
-          backgroundColor: backColor,
+          fixedColor: Theme.of(context).inputDecorationTheme.fillColor,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
