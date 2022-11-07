@@ -15,7 +15,7 @@ class ElixirsDetailInfoView extends StatelessWidget {
     return Card(
       child: Padding(
         padding: EdgeInsets.all(
-            DataFromScreenSize.getCardPadding(getScreenSize(context).index)),
+            DataFromScreenSize.cardPadding[getScreenSize(context).index]),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -6,6 +6,8 @@ import 'package:flutter_gpotter/internal/search_page.dart';
 import 'package:provider/provider.dart';
 import '../../internal/constants/app_colors.dart';
 import '../../internal/theme.dart';
+import 'package:flutter_gpotter/main.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 late User loggedinUser;
 
@@ -95,7 +97,7 @@ class _TabScreenState extends State<TabScreen> {
           StatusSettings.change.favoriteSccreenStatus
               ? 'favorite screen'
               : 'main screen',
-          style: Theme.of(context).textTheme.headline6,
+          // style: myTheme(getScreenSize(context).index).textTheme.headline6,
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         actions: [
@@ -122,8 +124,8 @@ class _TabScreenState extends State<TabScreen> {
             onPressed: (() {
               changeFavorite();
             }),
-            child: Icon(
-              Icons.star,
+            child: FaIcon(
+              FontAwesomeIcons.star,
               color: (StatusSettings.change.favoriteSccreenStatus
                   ? Theme.of(context).inputDecorationTheme.fillColor
                   : Theme.of(context).inputDecorationTheme.iconColor),
@@ -151,9 +153,19 @@ class _TabScreenState extends State<TabScreen> {
           items: const [
             BottomNavigationBarItem(
                 label: 'Elixirs', icon: Icon(Icons.drag_indicator_sharp)),
-            BottomNavigationBarItem(label: 'Houses', icon: Icon(Icons.home)),
-            BottomNavigationBarItem(label: 'Spells', icon: Icon(Icons.abc)),
-            BottomNavigationBarItem(label: 'Wizards', icon: Icon(Icons.wallet)),
+            BottomNavigationBarItem(
+                label: 'Houses', icon: FaIcon(FontAwesomeIcons.house)),
+            BottomNavigationBarItem(
+                label: 'Spells',
+                icon: Icon(
+                  Icons.abc,
+                )),
+            BottomNavigationBarItem(
+              label: 'Wizards',
+              //  icon: SvgPicture.asset(IMAGE_ASSETS_ICONS_ORDER_HISTORY, ) ,
+              // activeIcon: SvgPicture.asset(IMAGE_ASSETS_ICONS_ORDER_HISTORY, color: Theme.of(context).accentColor )
+              icon: FaIcon(FontAwesomeIcons.hatWizard),
+            ),
           ]),
     );
   }
