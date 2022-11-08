@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/internal/constants/app_colors.dart';
 import 'package:flutter_gpotter/main.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/potter_button.dart';
 import 'package:local_auth/local_auth.dart';
@@ -35,10 +34,9 @@ class WelcomeScreen extends StatelessWidget {
             children: [
               Image.asset("assets/images/logo.png"),
               Text(
-                'Dear Friends, welcome to Harry Potter the wizarding world! Please enter to authorization',
+                'Dear Friends, welcome to Harry Potter the wiQzarding world! Please enter to authorization',
                 softWrap: true,
-                style:
-                    myTheme(getScreenSize(context).index).textTheme.headline6,
+                style: Theme.of(context).textTheme.headline4,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),

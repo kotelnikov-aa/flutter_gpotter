@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
 import 'package:flutter_gpotter/internal/constants/app_colors.dart';
+import 'package:flutter_gpotter/internal/constants/app_sizes.dart';
 import 'package:flutter_gpotter/main.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/card_in_card.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/text_my_head_body.dart';
@@ -12,36 +13,32 @@ class HousesDetailInfoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-
       child: Padding(
         padding: EdgeInsets.all(
             DataFromScreenSize.cardPadding[getScreenSize(context).index]),
-        child:
-              Column(
-
-                mainAxisAlignment: MainAxisAlignment.start,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [Image.asset("assets/images/house.png"),
-                    TextHeadline1(value: houses.name ?? ' '),
-                ]       ,
-              ),
-                TextBody1(value: 'Commonroom- ${houses.commonRoom ?? ''}'),
-
-                CardInCard(
-                value: [
-                  TextBody1(value: 'element- ${houses.element ?? ''}'),
-                  TextBody1(value: 'founder- ${houses.founder ?? ''}'),
-                ]),
-                TextBody1(value: 'ghost- ${houses.ghost ?? ''}'),
-                CardInCard(value: [_ViewHeads(values: houses.heads!)]),
-                CardInCard(value: [
-                  _ViewTraits(values: houses.traits!),
-                ]),
+              children: [
+                Image.asset("assets/images/house.png"),
+                TextHeadline1(value: houses.name ?? ' '),
               ],
-
+            ),
+            TextBody1(value: 'Commonroom- ${houses.commonRoom ?? ''}'),
+            CardInCard(value: [
+              TextBody1(value: 'element- ${houses.element ?? ''}'),
+              TextBody1(value: 'founder- ${houses.founder ?? ''}'),
+            ]),
+            TextBody1(value: 'ghost- ${houses.ghost ?? ''}'),
+            CardInCard(value: [_ViewHeads(values: houses.heads!)]),
+            CardInCard(value: [
+              _ViewTraits(values: houses.traits!),
+            ]),
+          ],
         ),
       ),
     );
@@ -81,16 +78,16 @@ class _ViewTraits extends StatelessWidget {
     return values.isEmpty
         ? const TextBody1(value: 'not traits in this elixir')
         : Padding(
-            padding: EdgeInsets.all(DataFromScreenSize.cardPadding[
-                getScreenSize(context).index]),
+            padding: EdgeInsets.all(
+                DataFromScreenSize.cardPadding[getScreenSize(context).index]),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const TextBody1(value: 'House traits:'),
                 ListView.builder(
                   shrinkWrap: true,
-                  padding: EdgeInsets.all(DataFromScreenSize.cardPadding[
-                      getScreenSize(context).index]),
+                  padding: EdgeInsets.all(DataFromScreenSize
+                      .cardPadding[getScreenSize(context).index]),
                   itemCount: values.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Column(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
 import 'package:flutter_gpotter/internal/constants/app_colors.dart';
+import 'package:flutter_gpotter/internal/constants/app_sizes.dart';
 import 'package:flutter_gpotter/main.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/text_my_head_body.dart';
 import '../widgets_pages/card_in_card.dart';
@@ -19,13 +20,15 @@ class ElixirsDetailInfoView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Image.asset("assets/images/elixir.png"),
-              TextHeadline1(value: elixir.name ?? ' '),
-            ]       ,
-          ),
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset("assets/images/elixir.png"),
+                TextHeadline1(value: elixir.name ?? ' '),
+              ],
+            ),
             CardInCard(value: [
               TextBody1(value: 'Elixir effect: ${elixir.effect ?? ' '}'),
               TextBody1(value: 'Side effects: ${elixir.sideEffects ?? ' '}'),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/internal/constants/app_colors.dart';
+import 'package:flutter_gpotter/internal/constants/app_sizes.dart';
 import 'package:flutter_gpotter/main.dart';
 
 class BottonPotter extends StatelessWidget {

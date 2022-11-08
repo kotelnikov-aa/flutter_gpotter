@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
-import 'package:flutter_gpotter/internal/constants/app_colors.dart';
+import 'package:flutter_gpotter/internal/constants/app_sizes.dart';
 import 'package:flutter_gpotter/main.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/text_my_head_body.dart';
 
@@ -15,20 +15,22 @@ class SpelsShortInfoView extends StatelessWidget {
         padding: EdgeInsets.all(
             DataFromScreenSize.cardPadding[getScreenSize(context).index]),
         child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Image.asset("assets/images/spels.png"),
-        Expanded(child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextHeadline1(value: value.name ?? ''),
-            TextBody1(value: 'Effect - ${value.effect}'),
-            TextBody1(value: value.type.toString()),
+            Image.asset("assets/images/spels.png"),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextHeadline1(value: value.name ?? ''),
+                  TextBody1(value: 'Effect - ${value.effect}'),
+                  TextBody1(value: value.type.toString()),
+                ],
+              ),
+            ),
           ],
-        ),
-        ),
-        ],
         ),
       ),
     );

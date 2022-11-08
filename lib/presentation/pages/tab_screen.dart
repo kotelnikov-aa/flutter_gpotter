@@ -4,7 +4,7 @@ import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/internal/navigation/navigation.dart';
 import 'package:flutter_gpotter/internal/search_page.dart';
 import 'package:provider/provider.dart';
-import '../../internal/theme.dart';
+import '../../internal/theme/theme_state.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 late User loggedinUser;
@@ -81,12 +81,9 @@ class _TabScreenState extends State<TabScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
-          StatusSettings.change.favoriteSccreenStatus
-              ? 'favorite screen'
-              : 'main screen',
-        ),
-        //backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        title: Text(StatusSettings.change.favoriteSccreenStatus
+            ? 'favorite screen'
+            : 'main screen'),
         actions: [
           IconButton(
             onPressed: () {
@@ -137,21 +134,21 @@ class _TabScreenState extends State<TabScreen> {
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
-                label: 'Elixirs', icon: ImageIcon(AssetImage("assets/images/elixir_icon.png"), size: 24,),
-            ),
+                label: 'Elixirs',
+                icon: ImageIcon(AssetImage("assets/images/elixir_icon.png"),
+                    size: 24)),
             BottomNavigationBarItem(
-                label: 'Houses', icon: ImageIcon(AssetImage("assets/images/house_icon.png"),size: 24,),
-            ),
+                label: 'Houses',
+                icon: ImageIcon(AssetImage("assets/images/house_icon.png"),
+                    size: 24)),
             BottomNavigationBarItem(
                 label: 'Spells',
-                icon: ImageIcon(AssetImage("assets/images/spels_icon.png"),size: 24,),
-            ),
+                icon: ImageIcon(AssetImage("assets/images/spels_icon.png"),
+                    size: 24)),
             BottomNavigationBarItem(
-              label: 'Wizards',
-              //  icon: SvgPicture.asset(IMAGE_ASSETS_ICONS_ORDER_HISTORY, ) ,
-              // activeIcon: SvgPicture.asset(IMAGE_ASSETS_ICONS_ORDER_HISTORY, color: Theme.of(context).accentColor )
-              icon: ImageIcon(AssetImage("assets/images/wizart_icon.png"),size: 24,),
-            ),
+                label: 'Wizards',
+                icon: ImageIcon(AssetImage("assets/images/wizart_icon.png"),
+                    size: 24)),
           ]),
     );
   }

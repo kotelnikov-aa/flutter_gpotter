@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/generated/swagger.swagger.dart';
-import 'package:flutter_gpotter/internal/constants/app_colors.dart';
+import 'package:flutter_gpotter/internal/constants/app_sizes.dart';
 import 'package:flutter_gpotter/main.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/card_in_card.dart';
 import 'package:flutter_gpotter/presentation/pages/widgets_pages/text_my_head_body.dart';
@@ -19,14 +19,15 @@ class SplesDetailInfoView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Image.asset("assets/images/spels.png"),
-              TextHeadline1(value: spels.name ?? ' '),
-            ]       ,
-          ),
-
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset("assets/images/spels.png"),
+                TextHeadline1(value: spels.name ?? ' '),
+              ],
+            ),
             CardInCard(value: [
               TextBody1(value: 'Elixir effect: ${spels.effect ?? ' '}')
             ]),

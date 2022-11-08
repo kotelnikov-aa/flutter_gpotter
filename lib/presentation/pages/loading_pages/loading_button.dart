@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/internal/constants/app_colors.dart';
+import 'package:flutter_gpotter/internal/constants/app_sizes.dart';
 import 'package:flutter_gpotter/main.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -19,8 +20,8 @@ class LoadingButton extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               color: secondaryColorLight,
-              borderRadius: BorderRadius.circular(
-                  DataFromScreenSize.borderRarius[getScreenSize(context).index]),
+              borderRadius: BorderRadius.circular(DataFromScreenSize
+                  .borderRarius[getScreenSize(context).index]),
             ),
             // width: MediaQuery.of(context).size.width - 10.0,
             // height: 40,

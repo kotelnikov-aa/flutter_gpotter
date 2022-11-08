@@ -2,15 +2,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/presentation/pages/tab_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'internal/constants/app_colors.dart';
 import 'internal/enums.dart';
-import 'internal/theme.dart';
+import 'internal/theme/theme_state.dart';
+import 'internal/theme/themes_my_themdata.dart';
 import 'presentation/auth_pages/login_screen.dart';
 import 'presentation/auth_pages/signup_screen.dart';
 import 'presentation/auth_pages/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +33,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       home: Builder(
         builder: (BuildContext context) {
@@ -42,7 +40,6 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
-
   }
 }
 
@@ -51,19 +48,19 @@ class MyApp2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeState>(builder: ((context, state, child) {
-    return MaterialApp(
-      themeMode: state.theme,
-      debugShowCheckedModeBanner: false,
-      initialRoute: 'welcome_screen',
-      theme: myTheme(getScreenSize(context).index),
-      darkTheme: myDarkTheme(getScreenSize(context).index),
-      routes: {
-        'welcome_screen': (context) => const WelcomeScreen(),
-        'registration_screen': (context) => const RegistrationScreen(),
-        'login_screen': (context) => const LoginScreen(),
-        'home_screen': (context) => const TabScreen()
-      },
-    );
+      return MaterialApp(
+        themeMode: state.theme,
+        debugShowCheckedModeBanner: false,
+        initialRoute: 'welcome_screen',
+        theme: myTheme(getScreenSize(context).index),
+        darkTheme: myDarkTheme(getScreenSize(context).index),
+        routes: {
+          'welcome_screen': (context) => const WelcomeScreen(),
+          'registration_screen': (context) => const RegistrationScreen(),
+          'login_screen': (context) => const LoginScreen(),
+          'home_screen': (context) => const TabScreen()
+        },
+      );
     }));
   }
 }
