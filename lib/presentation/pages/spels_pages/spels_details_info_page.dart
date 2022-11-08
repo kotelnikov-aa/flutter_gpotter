@@ -19,8 +19,14 @@ class SplesDetailInfoView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextHeadline1(value: spels.name ?? ' '),
+          children: [Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Image.asset("assets/images/spels.png"),
+              TextHeadline1(value: spels.name ?? ' '),
+            ]       ,
+          ),
+
             CardInCard(value: [
               TextBody1(value: 'Elixir effect: ${spels.effect ?? ' '}')
             ]),

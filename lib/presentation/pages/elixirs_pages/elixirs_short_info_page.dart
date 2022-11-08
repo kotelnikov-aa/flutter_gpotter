@@ -14,7 +14,11 @@ class ElixirsShortInfoView extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(
             DataFromScreenSize.cardPadding[getScreenSize(context).index]),
-        child: Column(
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Image.asset("assets/images/elixir.png"),
+        Expanded(child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -26,7 +30,11 @@ class ElixirsShortInfoView extends StatelessWidget {
                 value: 'characteristics: ${value.characteristics.toString()}'),
           ],
         ),
+        ),
+        ],
+        ),
       ),
+
     );
   }
 }

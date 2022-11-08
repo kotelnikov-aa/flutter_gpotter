@@ -14,7 +14,11 @@ class HousesShortInfoView extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(
             DataFromScreenSize.cardPadding[getScreenSize(context).index]),
-        child: Column(
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Image.asset("assets/images/house.png"),
+        Expanded(child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -24,6 +28,9 @@ class HousesShortInfoView extends StatelessWidget {
             const SizedBox(height: 5),
             TextBody1(value: value.ghost.toString()),
           ],
+        ),
+        ),
+        ],
         ),
       ),
     );

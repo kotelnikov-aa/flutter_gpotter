@@ -42,6 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Image.asset("assets/images/9-34.png"),
               Text(
                 'please,',
                 style: Theme.of(context).textTheme.headline4,
