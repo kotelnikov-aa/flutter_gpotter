@@ -20,9 +20,15 @@ class WizartsDetailInfoView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextHeadline1(value: validName(wizarts.firstName ?? '')),
-            TextHeadline1(value: wizarts.lastName ?? ''),
+          children: [Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Image.asset("assets/images/wizart.png"),
+              TextHeadline1(value: validName(wizarts.lastName ?? '')),
+            ]       ,
+          ),
+
+            TextHeadline1(value: wizarts.firstName ?? ''),
             CardInCard(value: [_ViewIngredients(values: wizarts.elixirs!)]),
           ],
         ),

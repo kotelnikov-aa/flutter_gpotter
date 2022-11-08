@@ -15,7 +15,8 @@ class HousesCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
+      child:
+      Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -35,6 +36,7 @@ class HousesCardScreen extends StatelessWidget {
           ),
           const BackButtonPotter(apiKey: DataAPI.houses),
         ],
+
       ),
     );
   }
