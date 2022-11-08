@@ -19,8 +19,13 @@ class ElixirsDetailInfoView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextHeadline1(value: elixir.name ?? ' '),
+          children: [Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Image.asset("assets/images/elixir.png"),
+              TextHeadline1(value: elixir.name ?? ' '),
+            ]       ,
+          ),
             CardInCard(value: [
               TextBody1(value: 'Elixir effect: ${elixir.effect ?? ' '}'),
               TextBody1(value: 'Side effects: ${elixir.sideEffects ?? ' '}'),

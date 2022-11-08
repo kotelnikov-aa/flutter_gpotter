@@ -10,13 +10,20 @@ class WizartsShortInfoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Column(
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Image.asset("assets/images/wizart.png"),
+      Expanded(child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           TextHeadline1(value: validName(value.firstName ?? '')),
           TextHeadline1(value: value.lastName ?? ''),
-        ],
+         ],
+        ),
+      ),
+       ],
       ),
     );
   }
