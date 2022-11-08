@@ -14,14 +14,17 @@ class BottonPotter extends StatelessWidget {
         aspectRatio: 12 / 1,
         child: Container(
           decoration: BoxDecoration(
-            color: secondaryColorLight,
+            color: Theme.of(context).focusColor,
             borderRadius: BorderRadius.circular(
                 DataFromScreenSize.borderRarius[getScreenSize(context).index] *
                     2),
           ),
           alignment: Alignment.center,
-          child: Text(value,
-              style: myTheme(getScreenSize(context).index).textTheme.button),
+          child: Text(
+            value,
+            style: Theme.of(context).textTheme.button!.copyWith(
+                color: Theme.of(context).inputDecorationTheme.fillColor),
+          ),
         ),
       ),
     );

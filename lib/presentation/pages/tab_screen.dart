@@ -4,9 +4,7 @@ import 'package:flutter_gpotter/internal/enums.dart';
 import 'package:flutter_gpotter/internal/navigation/navigation.dart';
 import 'package:flutter_gpotter/internal/search_page.dart';
 import 'package:provider/provider.dart';
-import '../../internal/constants/app_colors.dart';
 import '../../internal/theme.dart';
-import 'package:flutter_gpotter/main.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 late User loggedinUser;
@@ -22,8 +20,6 @@ class _TabScreenState extends State<TabScreen> {
   int _currentIndex = 0;
   final _auth = FirebaseAuth.instance;
   List<Widget> stackList = NavigatorList.getPages();
-  Color backColor = secondaryColorLight;
-  Color mainColor = secondaryColor;
 
   @override
   void initState() {
@@ -47,16 +43,8 @@ class _TabScreenState extends State<TabScreen> {
 
   void changeFavorite() {
     setState(() {
-      if (StatusSettings.change.favoriteSccreenStatus) {
-        StatusSettings.change.favoriteSccreenStatus = false;
-
-        backColor = secondaryColorLight;
-        mainColor = secondaryColor;
-      } else {
-        StatusSettings.change.favoriteSccreenStatus = true;
-        backColor = secondaryColor;
-        mainColor = secondaryColorLight;
-      }
+      StatusSettings.change.favoriteSccreenStatus =
+          StatusSettings.change.favoriteSccreenStatus ? false : true;
       stackList = changeStackList();
     });
   }
@@ -90,16 +78,14 @@ class _TabScreenState extends State<TabScreen> {
     final themeState = context.watch<ThemeState>();
 
     return Scaffold(
-
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
           StatusSettings.change.favoriteSccreenStatus
               ? 'favorite screen'
               : 'main screen',
-          // style: myTheme(getScreenSize(context).index).textTheme.headline6,
         ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        //backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         actions: [
           IconButton(
             onPressed: () {
@@ -107,7 +93,7 @@ class _TabScreenState extends State<TabScreen> {
                   builder: (_) => SearchPage(currentIndex: _currentIndex)));
             },
             icon: const Icon(Icons.search),
-            color: Theme.of(context).inputDecorationTheme.fillColor,
+            color: Theme.of(context).inputDecorationTheme.iconColor,
           ),
           TextButton(
             onPressed: (() {
@@ -147,8 +133,6 @@ class _TabScreenState extends State<TabScreen> {
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: changeTab,
-          fixedColor: Theme.of(context).inputDecorationTheme.fillColor,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
