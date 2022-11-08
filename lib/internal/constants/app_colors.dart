@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../enums.dart';
-
 //light theme
 const primaryColor = Color(0xFFe8b639);
 const primaryColorLight = Color(0xFFccfcfc);
