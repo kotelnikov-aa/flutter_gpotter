@@ -57,6 +57,7 @@ class _TabScreenState extends State<TabScreen> {
     });
   }
 
+//
   //using this function you can use the credentials of the user
   void getCurrentUser() async {
     try {
