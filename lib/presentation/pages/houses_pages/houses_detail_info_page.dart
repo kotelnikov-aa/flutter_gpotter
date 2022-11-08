@@ -12,25 +12,36 @@ class HousesDetailInfoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+
       child: Padding(
         padding: EdgeInsets.all(
             DataFromScreenSize.cardPadding[getScreenSize(context).index]),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextHeadline1(value: houses.name ?? ' '),
-            TextBody1(value: 'Commonroom- ${houses.commonRoom ?? ''}'),
-            CardInCard(value: [
-              TextBody1(value: 'element- ${houses.element ?? ''}'),
-              TextBody1(value: 'founder- ${houses.founder ?? ''}'),
-            ]),
-            TextBody1(value: 'ghost- ${houses.ghost ?? ''}'),
-            CardInCard(value: [_ViewHeads(values: houses.heads!)]),
-            CardInCard(value: [
-              _ViewTraits(values: houses.traits!),
-            ]),
-          ],
+        child:
+              Column(
+
+                mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [Image.asset("assets/images/house.png"),
+                    TextHeadline1(value: houses.name ?? ' '),
+                ]       ,
+              ),
+                TextBody1(value: 'Commonroom- ${houses.commonRoom ?? ''}'),
+
+                CardInCard(
+                value: [
+                  TextBody1(value: 'element- ${houses.element ?? ''}'),
+                  TextBody1(value: 'founder- ${houses.founder ?? ''}'),
+                ]),
+                TextBody1(value: 'ghost- ${houses.ghost ?? ''}'),
+                CardInCard(value: [_ViewHeads(values: houses.heads!)]),
+                CardInCard(value: [
+                  _ViewTraits(values: houses.traits!),
+                ]),
+              ],
+
         ),
       ),
     );

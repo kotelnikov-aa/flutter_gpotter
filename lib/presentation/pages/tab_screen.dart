@@ -152,19 +152,20 @@ class _TabScreenState extends State<TabScreen> {
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
-                label: 'Elixirs', icon: Icon(Icons.drag_indicator_sharp)),
+                label: 'Elixirs', icon: ImageIcon(AssetImage("assets/images/elixir_icon.png"), size: 24,),
+            ),
             BottomNavigationBarItem(
-                label: 'Houses', icon: FaIcon(FontAwesomeIcons.house)),
+                label: 'Houses', icon: ImageIcon(AssetImage("assets/images/house_icon.png"),size: 24,),
+            ),
             BottomNavigationBarItem(
                 label: 'Spells',
-                icon: Icon(
-                  Icons.abc,
-                )),
+                icon: ImageIcon(AssetImage("assets/images/spels_icon.png"),size: 24,),
+            ),
             BottomNavigationBarItem(
               label: 'Wizards',
               //  icon: SvgPicture.asset(IMAGE_ASSETS_ICONS_ORDER_HISTORY, ) ,
               // activeIcon: SvgPicture.asset(IMAGE_ASSETS_ICONS_ORDER_HISTORY, color: Theme.of(context).accentColor )
-              icon: FaIcon(FontAwesomeIcons.hatWizard),
+              icon: ImageIcon(AssetImage("assets/images/wizart_icon.png"),size: 24,),
             ),
           ]),
     );

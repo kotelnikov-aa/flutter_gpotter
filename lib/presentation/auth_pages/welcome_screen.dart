@@ -33,6 +33,7 @@ class WelcomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Image.asset("assets/images/logo.png"),
               Text(
                 'Dear Friends, welcome to Harry Potter the wizarding world! Please enter to authorization',
                 softWrap: true,
@@ -54,7 +55,7 @@ class WelcomeScreen extends StatelessWidget {
                 },
               ),
               GestureDetector(
-                child: const BottonPotter(value: 'biometric'),
+                child: const BottonPotter(value: 'fingerprint'),
                 onTap: () {
                   _authenticateWithBiometrics(context);
                 },

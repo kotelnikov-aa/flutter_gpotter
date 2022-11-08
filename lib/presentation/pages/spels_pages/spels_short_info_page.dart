@@ -14,7 +14,11 @@ class SpelsShortInfoView extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(
             DataFromScreenSize.cardPadding[getScreenSize(context).index]),
-        child: Column(
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Image.asset("assets/images/spels.png"),
+        Expanded(child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -22,6 +26,9 @@ class SpelsShortInfoView extends StatelessWidget {
             TextBody1(value: 'Effect - ${value.effect}'),
             TextBody1(value: value.type.toString()),
           ],
+        ),
+        ),
+        ],
         ),
       ),
     );
