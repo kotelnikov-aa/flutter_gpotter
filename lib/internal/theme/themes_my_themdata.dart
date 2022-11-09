@@ -159,10 +159,11 @@ ThemeData myDarkTheme(int value) {
           fontStyle: FontStyle.normal,
           fontWeight: FontWeight.w500),
       headline3: TextStyle(
-        fontFamily: 'Grotesque',
+        fontFamily: 'Roboto',
         color: textColorLight.withOpacity(0.7),
-        fontStyle: FontStyle.normal,
-        fontSize: DataFromScreenSize.textSizeheadline6[value],
+        // fontStyle: FontStyle.italic,
+        //fontWeight: FontWeight.w500,
+        // fontSize: DataFromScreenSize.textSizeheadline6[value],
       ),
       headline4: GoogleFonts.amaticSc(
         color: textColorLight.withOpacity(0.7),

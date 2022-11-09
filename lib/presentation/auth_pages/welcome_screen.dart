@@ -35,7 +35,7 @@ class WelcomeScreen extends StatelessWidget {
               Text(
                 'Dear Friends, welcome to Harry Potter the wizarding world! Please enter to authorization',
                 softWrap: true,
-                style: Theme.of(context).textTheme.headline3,
+                style: Theme.of(context).textTheme.headline4,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
