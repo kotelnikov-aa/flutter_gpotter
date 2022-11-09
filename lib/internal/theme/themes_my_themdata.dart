@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/internal/constants/app_colors.dart';
 import 'package:flutter_gpotter/internal/constants/app_sizes.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ThemeData myTheme(int value) {
   return ThemeData(
@@ -67,13 +68,11 @@ ThemeData myTheme(int value) {
           fontSize: DataFromScreenSize.textSizeheadline6[value],
           color: textColorLight,
           fontWeight: FontWeight.w500),
-      headline4: TextStyle(
-          fontFamily: 'Cinzel',
-          // fontSize: DataFromScreenSize.textSizeheadline6[value],
-          // color: textColorLight,
-          // fontStyle: FontStyle,
-          fontWeight: FontWeight.w700),
-
+      headline4: GoogleFonts.amaticSc(
+        color: textColorLight.withOpacity(0.7),
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w900,
+      ),
       bodyText1: TextStyle(
           fontSize: DataFromScreenSize.textSizebodytext1[value],
           color: textColorLight,
@@ -159,6 +158,18 @@ ThemeData myDarkTheme(int value) {
           color: secondaryColorLight,
           fontStyle: FontStyle.normal,
           fontWeight: FontWeight.w500),
+      headline3: TextStyle(
+        fontFamily: 'Grotesque',
+        color: textColorLight.withOpacity(0.7),
+        fontStyle: FontStyle.normal,
+        fontSize: DataFromScreenSize.textSizeheadline6[value],
+      ),
+      headline4: GoogleFonts.amaticSc(
+        color: textColorLight.withOpacity(0.7),
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w900,
+        fontSize: DataFromScreenSize.textSizeheadline6[value],
+      ),
       bodyText1: TextStyle(
           fontSize: DataFromScreenSize.textSizebodytext1[value],
           color: textColorDark,
