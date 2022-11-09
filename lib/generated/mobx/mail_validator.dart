@@ -80,10 +80,10 @@ Future<bool> checkEmailInUsed(String emailAddress) async {
     final list =
         await FirebaseAuth.instance.fetchSignInMethodsForEmail(emailAddress);
     if (list.isNotEmpty) {
-      print('user using the email address');
+      // print('user using the email address');
       return true;
     } else {
-      print('user not registered');
+      // print('user not registered');
       return false;
     }
   } catch (error) {

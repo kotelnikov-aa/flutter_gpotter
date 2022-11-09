@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gpotter/internal/constants/app_colors.dart';
-import 'package:flutter_gpotter/main.dart';
 
 class TextHeadline1 extends StatelessWidget {
   const TextHeadline1({super.key, required this.value});

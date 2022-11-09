@@ -4,9 +4,7 @@ import 'package:flutter_gpotter/presentation/pages/elixirs_pages/elixirs_screen.
 import 'package:flutter_gpotter/presentation/pages/houses_pages/houses_screen.dart';
 import 'package:flutter_gpotter/presentation/pages/spels_pages/spels_screen.dart';
 import 'package:flutter_gpotter/presentation/pages/wizards_pages/wizarts_screen.dart';
-
 import '../../internal/enums.dart';
-
 import 'loading_pages/loading_list_page.dart';
 
 class DataScreen extends StatefulWidget {
