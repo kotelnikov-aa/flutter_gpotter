@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gpotter/internal/constants/app_colors.dart';
 import 'package:flutter_gpotter/internal/constants/app_sizes.dart';
 import 'package:flutter_gpotter/main.dart';
+import 'package:flutter_gpotter/presentation/pages/loading_pages/get_shimer_colors.dart';
 import 'package:shimmer/shimmer.dart';
 
 class LoadingPage extends StatelessWidget {
@@ -9,16 +10,17 @@ class LoadingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final shimerColorTheme = getShimesColor(context);
     return Shimmer.fromColors(
-      baseColor: primaryColorLight,
-      highlightColor: secondaryColorLight,
+      baseColor: shimerColorTheme.first,
+      highlightColor: shimerColorTheme.last,
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         itemCount: 6,
         itemBuilder: (context, i) => Padding(
           padding: const EdgeInsets.all(5.0),
           child: AspectRatio(
-            aspectRatio: 5 / 1,
+            aspectRatio: 4 / 1,
             child: Container(
               decoration: BoxDecoration(
                 color: primaryColor,

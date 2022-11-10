@@ -25,7 +25,7 @@ class SplesDetailInfoView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset("assets/images/spels.png"),
-                TextHeadline1(value: spels.name ?? ' '),
+                Expanded(child: TextHeadline1(value: spels.name ?? ' ')),
               ],
             ),
             CardInCard(value: [

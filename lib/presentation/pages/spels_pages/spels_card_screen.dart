@@ -13,24 +13,26 @@ class SplelsCardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SingleChildScrollView(child: SplesDetailInfoView(spels: spels)),
-        FaviriteButtonChange(value: spels),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    ShareScreen(text: spels.name!, subject: spels.effect!),
-              ),
-            );
-          },
-          child: const BottonPotter(value: 'send info'),
-        ),
-        const BackButtonPotter(apiKey: DataAPI.spels),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SingleChildScrollView(child: SplesDetailInfoView(spels: spels)),
+          FaviriteButtonChange(value: spels),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ShareScreen(text: spels.name!, subject: spels.effect!),
+                ),
+              );
+            },
+            child: const BottonPotter(value: 'send info'),
+          ),
+          const BackButtonPotter(apiKey: DataAPI.spels),
+        ],
+      ),
     );
   }
 }

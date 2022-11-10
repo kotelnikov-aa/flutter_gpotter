@@ -31,70 +31,72 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ModalProgressHUD(
-        inAsyncCall: showSpinner,
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'welcome',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                const SizedBox(height: 15.0),
-                Observer(
-                  builder: (_) => TextField(
-                    decoration: InputDecoration(
-                        labelText: 'email',
-                        hintText: 'enter email',
-                        errorText: mailCheck.error.email),
-                    keyboardType: TextInputType.emailAddress,
-                    textAlign: TextAlign.center,
-                    onChanged: (value) => mailCheck.email = value,
+      body: SingleChildScrollView(
+        child: ModalProgressHUD(
+          inAsyncCall: showSpinner,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'welcome',
+                    style: Theme.of(context).textTheme.headline4,
                   ),
-                ),
-                const SizedBox(height: 15.0),
-                Observer(
-                  builder: (_) => TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        labelText: 'password',
-                        hintText: 'enter passwords',
-                        errorText: mailCheck.error.password),
-                    textAlign: TextAlign.center,
-                    onChanged: (value) => mailCheck.password = value,
+                  const SizedBox(height: 15.0),
+                  Observer(
+                    builder: (_) => TextField(
+                      decoration: InputDecoration(
+                          labelText: 'email',
+                          hintText: 'enter email',
+                          errorText: mailCheck.error.email),
+                      keyboardType: TextInputType.emailAddress,
+                      textAlign: TextAlign.center,
+                      onChanged: (value) => mailCheck.email = value,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 15.0),
-                GestureDetector(
-                    child: const BottonPotter(value: 'registered'),
-                    onTap: () async {
-                      setState(
-                        () {
-                          showSpinner = true;
-                        },
-                      );
-                      try {
-                        final newUser =
-                            await _auth.createUserWithEmailAndPassword(
-                                email: mailCheck.email,
-                                password: mailCheck.password);
-                        if (newUser != null) {
-                          Navigator.pushNamed(context, 'home_screen');
+                  const SizedBox(height: 15.0),
+                  Observer(
+                    builder: (_) => TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          labelText: 'password',
+                          hintText: 'enter passwords',
+                          errorText: mailCheck.error.password),
+                      textAlign: TextAlign.center,
+                      onChanged: (value) => mailCheck.password = value,
+                    ),
+                  ),
+                  const SizedBox(height: 15.0),
+                  GestureDetector(
+                      child: const BottonPotter(value: 'registered'),
+                      onTap: () async {
+                        setState(
+                          () {
+                            showSpinner = true;
+                          },
+                        );
+                        try {
+                          final newUser =
+                              await _auth.createUserWithEmailAndPassword(
+                                  email: mailCheck.email,
+                                  password: mailCheck.password);
+                          if (newUser != null) {
+                            Navigator.pushNamed(context, 'home_screen');
+                          }
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(e.toString()),
+                          ));
                         }
-                      } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text(e.toString()),
-                        ));
-                      }
-                      setState(() {
-                        showSpinner = false;
-                      });
-                    }),
-              ],
+                        setState(() {
+                          showSpinner = false;
+                        });
+                      }),
+                ],
+              ),
             ),
           ),
         ),

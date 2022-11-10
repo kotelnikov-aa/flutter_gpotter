@@ -7,4 +7,5 @@ abstract class DataFromScreenSize {
   static const List<double> borderRarius = [10.0, 8.0, 18.0, 24.0];
   static const List<double> cardPadding = [6.0, 10.0, 14.0, 20.0];
   static const List<double> iconSize = [16.0, 25.0, 50.0, 80.0];
+  static const List<double> appbarSize = [40.0, 80.0, 160.0, 200.0];
 }

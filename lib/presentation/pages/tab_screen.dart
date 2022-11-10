@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_gpotter/internal/enums.dart';
-import 'package:flutter_gpotter/internal/navigation/navigation.dart';
+import 'package:flutter_gpotter/generated/mobx/tab_screen_mobx.dart';
+import 'package:flutter_gpotter/internal/constants/app_colors.dart';
+import 'package:flutter_gpotter/internal/constants/app_sizes.dart';
 import 'package:flutter_gpotter/internal/search_page.dart';
+import 'package:flutter_gpotter/main.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import '../../internal/theme/theme_state.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,47 +20,22 @@ class TabScreen extends StatefulWidget {
 }
 
 class _TabScreenState extends State<TabScreen> {
-  int _currentIndex = 0;
+  final mobxState = TabScreenState();
   final _auth = FirebaseAuth.instance;
-  List<Widget> stackList = NavigatorList.getPages();
 
   @override
   void initState() {
     super.initState();
+    mobxState.setupValidators();
     getCurrentUser();
   }
 
-  List<Widget> changeStackList() {
-    List<Widget> stack;
-    StatusSettings.change.favoriteSccreenStatus
-        ? stack = NavigatorList.getFavoritePages()
-        : stack = NavigatorList.getPages();
-    return stack;
+  @override
+  void dispose() {
+    super.dispose();
+    mobxState.dispose();
   }
 
-  void changeTab(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-  void changeFavorite() {
-    setState(() {
-      StatusSettings.change.favoriteSccreenStatus =
-          StatusSettings.change.favoriteSccreenStatus ? false : true;
-      stackList = changeStackList();
-    });
-  }
-
-  void chanheSorting() {
-    setState(() {
-      StatusSettings.change.sortingListStatus =
-          StatusSettings.change.sortingListStatus ? false : true;
-      stackList = changeStackList();
-    });
-  }
-
-//
   //using this function you can use the credentials of the user
   void getCurrentUser() async {
     try {
@@ -77,60 +55,70 @@ class _TabScreenState extends State<TabScreen> {
   @override
   Widget build(BuildContext context) {
     final themeState = context.watch<ThemeState>();
-
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(StatusSettings.change.favoriteSccreenStatus
-            ? 'favorite screen'
-            : 'main screen'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => SearchPage(currentIndex: _currentIndex)));
-            },
-            icon: const Icon(Icons.search),
-            color: Theme.of(context).inputDecorationTheme.iconColor,
-          ),
-          TextButton(
-            onPressed: (() {
-              chanheSorting();
-            }),
-            child: Icon(
-              Icons.list,
-              color: (StatusSettings.change.sortingListStatus
-                  ? Theme.of(context).inputDecorationTheme.fillColor
-                  : Theme.of(context).inputDecorationTheme.iconColor),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(
+          DataFromScreenSize.appbarSize[getScreenSize(context).index],
+        ),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          flexibleSpace: Align(
+            alignment: Alignment.bottomCenter,
+            child: Observer(
+              builder: (_) => Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Text(
+                  mobxState.getAppbarTitle,
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+              ),
             ),
           ),
-          TextButton(
-            onPressed: (() {
-              changeFavorite();
-            }),
-            child: FaIcon(
-              FontAwesomeIcons.star,
-              color: (StatusSettings.change.favoriteSccreenStatus
-                  ? Theme.of(context).inputDecorationTheme.fillColor
-                  : Theme.of(context).inputDecorationTheme.iconColor),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) =>
+                        SearchPage(currentIndex: mobxState.currentIndex)));
+              },
+              icon: const Icon(Icons.search),
+              color: secondaryColorDark,
             ),
-          ),
-          Switch(
-            value: themeState.isDark,
-            onChanged: (value) {
-              if (value) {
-                themeState.setDarkTheme();
-              } else {
-                themeState.setLightTheme();
-              }
-            },
-          ),
-        ],
+            Observer(
+              builder: (_) => TextButton(
+                onPressed: mobxState.changeSorting,
+                child: Icon(
+                  Icons.list,
+                  color: mobxState.getSortingColor,
+                ),
+              ),
+            ),
+            Observer(
+              builder: (_) => TextButton(
+                onPressed: mobxState.changeFavorite,
+                child: FaIcon(
+                  FontAwesomeIcons.star,
+                  color: mobxState.getFavoriteColor,
+                ),
+              ),
+            ),
+            Switch(
+              value: themeState.isDark,
+              onChanged: (value) {
+                value ? themeState.setDarkTheme() : themeState.setLightTheme();
+              },
+            ),
+          ],
+        ),
       ),
-      body: IndexedStack(index: _currentIndex, children: stackList),
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: changeTab,
+      body: Observer(
+        builder: (_) => IndexedStack(
+            index: mobxState.currentIndex, children: mobxState.stackList),
+      ),
+      bottomNavigationBar: Observer(
+        builder: (_) => BottomNavigationBar(
+          currentIndex: mobxState.currentIndex,
+          onTap: mobxState.changeTab,
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
@@ -149,7 +137,9 @@ class _TabScreenState extends State<TabScreen> {
                 label: 'Wizards',
                 icon: ImageIcon(AssetImage("assets/images/wizart_icon.png"),
                     size: 24)),
-          ]),
+          ],
+        ),
+      ),
     );
   }
 }

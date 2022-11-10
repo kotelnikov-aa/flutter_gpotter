@@ -12,34 +12,37 @@ class ElixirsDetailInfoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: EdgeInsets.all(
-            DataFromScreenSize.cardPadding[getScreenSize(context).index]),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.asset("assets/images/elixir.png"),
-                TextHeadline1(value: elixir.name ?? ' '),
-              ],
-            ),
-            CardInCard(value: [
-              TextBody1(value: 'Elixir effect: ${elixir.effect ?? ' '}'),
-              TextBody1(value: 'Side effects: ${elixir.sideEffects ?? ' '}'),
-            ]),
-            TextBody1(value: 'time:  ${elixir.time ?? ' '}'),
-            TextBody1(value: 'manufacturer: ${elixir.manufacturer ?? ' '}'),
-            TextBody1(
-                value: 'characteristics:  ${elixir.characteristics ?? ' '}'),
-            const Divider(),
-            CardInCard(value: [_ViewIngredients(values: elixir.ingredients!)]),
-            CardInCard(value: [_ViewInventors(values: elixir.inventors!)]),
-          ],
+    return SingleChildScrollView(
+      child: Card(
+        child: Padding(
+          padding: EdgeInsets.all(
+              DataFromScreenSize.cardPadding[getScreenSize(context).index]),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset("assets/images/elixir.png"),
+                  Expanded(child: TextHeadline1(value: elixir.name ?? ' ')),
+                ],
+              ),
+              CardInCard(value: [
+                TextBody1(value: 'Elixir effect: ${elixir.effect ?? ' '}'),
+                TextBody1(value: 'Side effects: ${elixir.sideEffects ?? ' '}'),
+              ]),
+              TextBody1(value: 'time:  ${elixir.time ?? ' '}'),
+              TextBody1(value: 'manufacturer: ${elixir.manufacturer ?? ' '}'),
+              TextBody1(
+                  value: 'characteristics:  ${elixir.characteristics ?? ' '}'),
+              const Divider(),
+              CardInCard(
+                  value: [_ViewIngredients(values: elixir.ingredients!)]),
+              CardInCard(value: [_ViewInventors(values: elixir.inventors!)]),
+            ],
+          ),
         ),
       ),
     );

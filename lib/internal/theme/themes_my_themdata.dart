@@ -69,10 +69,15 @@ ThemeData myTheme(int value) {
           color: textColorLight,
           fontWeight: FontWeight.w500),
       headline4: GoogleFonts.amaticSc(
-        color: textColorLight.withOpacity(0.7),
-        fontStyle: FontStyle.normal,
-        fontWeight: FontWeight.w900,
-      ),
+          color: textColorLight.withOpacity(0.7),
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.w900),
+      headline3: TextStyle(
+          fontFamily: 'BriosoPro',
+          color: textColorLight.withOpacity(0.7),
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.w900,
+          fontSize: DataFromScreenSize.iconSize[value]),
       bodyText1: TextStyle(
           fontSize: DataFromScreenSize.textSizebodytext1[value],
           color: textColorLight,
@@ -159,12 +164,11 @@ ThemeData myDarkTheme(int value) {
           fontStyle: FontStyle.normal,
           fontWeight: FontWeight.w500),
       headline3: TextStyle(
-        fontFamily: 'Roboto',
-        color: textColorLight.withOpacity(0.7),
-        // fontStyle: FontStyle.italic,
-        //fontWeight: FontWeight.w500,
-        // fontSize: DataFromScreenSize.textSizeheadline6[value],
-      ),
+          fontFamily: 'BriosoPro',
+          color: primaryColor.withOpacity(0.7),
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.w900,
+          fontSize: DataFromScreenSize.iconSize[value]),
       headline4: GoogleFonts.amaticSc(
         color: textColorLight.withOpacity(0.7),
         fontStyle: FontStyle.normal,
