@@ -10,11 +10,12 @@ import 'presentation/auth_pages/signup_screen.dart';
 import 'presentation/auth_pages/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   final storage = await SharedPreferences.getInstance();
   runApp(
     MultiProvider(
