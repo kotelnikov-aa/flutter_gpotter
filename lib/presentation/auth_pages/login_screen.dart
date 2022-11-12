@@ -34,69 +34,68 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: ModalProgressHUD(
-          inAsyncCall: showSpinner,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset("assets/images/9-34.png"),
-                Text(
-                  'please,',
-                  style: Theme.of(context).textTheme.headline4,
+      resizeToAvoidBottomInset: false,
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset("assets/images/9-34.png"),
+              Text(
+                'please,',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+              const SizedBox(height: 15.0),
+              Observer(
+                builder: (_) => TextField(
+                  decoration: InputDecoration(
+                      labelText: 'email',
+                      hintText: 'enter email',
+                      errorText: mailCheck.error.email),
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) => mailCheck.email = value,
                 ),
-                const SizedBox(height: 15.0),
-                Observer(
-                  builder: (_) => TextField(
-                    decoration: InputDecoration(
-                        labelText: 'email',
-                        hintText: 'enter email',
-                        errorText: mailCheck.error.email),
-                    keyboardType: TextInputType.emailAddress,
-                    textAlign: TextAlign.center,
-                    onChanged: (value) => mailCheck.email = value,
-                  ),
+              ),
+              const SizedBox(height: 15.0),
+              Observer(
+                builder: (_) => TextField(
+                  decoration: InputDecoration(
+                      labelText: 'password',
+                      hintText: 'enter password min 8 characteres',
+                      errorText: mailCheck.error.password),
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) => mailCheck.password = value,
                 ),
-                const SizedBox(height: 15.0),
-                Observer(
-                  builder: (_) => TextField(
-                    decoration: InputDecoration(
-                        labelText: 'password',
-                        hintText: 'enter password min 8 characteres',
-                        errorText: mailCheck.error.password),
-                    obscureText: true,
-                    textAlign: TextAlign.center,
-                    onChanged: (value) => mailCheck.password = value,
-                  ),
-                ),
-                const SizedBox(height: 15.0),
-                GestureDetector(
-                  child: const BottonPotter(value: 'login in'),
-                  onTap: () async {
-                    setState(() {
-                      showSpinner = true;
-                    });
-                    try {
-                      final user = await _auth.signInWithEmailAndPassword(
-                          email: mailCheck.email, password: mailCheck.password);
-                      if (user != null) {
-                        Navigator.pushNamed(context, 'home_screen');
-                      }
-                    } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text(e.toString()),
-                      ));
+              ),
+              const SizedBox(height: 15.0),
+              GestureDetector(
+                child: const BottonPotter(value: 'login in'),
+                onTap: () async {
+                  setState(() {
+                    showSpinner = true;
+                  });
+                  try {
+                    final user = await _auth.signInWithEmailAndPassword(
+                        email: mailCheck.email, password: mailCheck.password);
+                    if (user != null) {
+                      Navigator.pushNamed(context, 'home_screen');
                     }
-                    setState(() {
-                      showSpinner = false;
-                    });
-                  },
-                ),
-              ],
-            ),
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(e.toString()),
+                    ));
+                  }
+                  setState(() {
+                    showSpinner = false;
+                  });
+                },
+              ),
+            ],
           ),
         ),
       ),
